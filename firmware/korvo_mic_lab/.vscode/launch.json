@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "FirmwareMine ESP32-S3 native USB",
+      "type": "gdbtarget",
+      "request": "attach",
+      "program": "${workspaceFolder}/build-usb/korvo_mic_lab.elf"
+    },
+    {
+      "name": "FirmwareMine host feature fixture",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/host_test",
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "preLaunchTask": "FirmwareMine: feature host tests"
+    }
+  ]
+}

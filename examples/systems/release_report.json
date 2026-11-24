@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "accepted_fixture": 1,
+  "rejected_tamper_or_incompatibility_fixtures": 7,
+  "authentication": "NOT implemented; anyone able to replace both manifest and payload can recompute hash",
+  "activation": "NOT implemented; no files flashed or active state changed"
+}

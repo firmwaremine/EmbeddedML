@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "artifact": "neural/generated/neural_model.json",
+  "sha256": "b8261a547887c6e4b659bce72f5e19f0cadb8c3a41c2f4c103c37e142ee1531a",
+  "family": "teaching-3-8-3",
+  "input_features": 3,
+  "preprocessing": "mean-acrms-mad-v1",
+  "labels": [
+    "idle",
+    "smooth",
+    "rough"
+  ],
+  "revision": 2,
+  "verification": "host-replay-only",
+  "signature_verified": false
+}

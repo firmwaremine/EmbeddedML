@@ -1,0 +1,12 @@
+{
+  "idf.buildPath": "${workspaceFolder}/build-usb",
+  "idf.sdkconfigFilePath": "${workspaceFolder}/sdkconfig.usb",
+  "idf.sdkconfigDefaults": [
+    "sdkconfig.usb.defaults"
+  ],
+  "idf.openOcdConfigs": [
+    "board/esp32s3-builtin.cfg"
+  ],
+  "idf.flashType": "UART",
+  "idf.flashBaudRate": "460800"
+}

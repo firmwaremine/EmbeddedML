@@ -1,0 +1,22 @@
+{
+  "mean": [
+    1.0030448957045037,
+    0.20049524841335994,
+    0.10072849487225644
+  ],
+  "scale": [
+    0.08166798339965536,
+    0.02027577051697695,
+    0.014591555420423341
+  ],
+  "threshold": 9.66069622157482,
+  "rule": "score > threshold",
+  "validation_rank_1_based": 159,
+  "train_n": 480,
+  "validation_n": 160,
+  "test_n": 160,
+  "test_normal_flagged": 0,
+  "test_shifted_flagged": 130,
+  "seed": "44119+session",
+  "scope": "synthetic independent feature vectors, no diagnosis or field rate"
+}

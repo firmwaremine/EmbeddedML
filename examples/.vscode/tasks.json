@@ -1,0 +1,131 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "FirmwareMine: Chapter 4 lab 1",
+      "type": "shell",
+      "command": "\"${workspaceFolder}/.venv/bin/python\" tools/train.py && \"${workspaceFolder}/.venv/bin/python\" tools/export_c.py && cmake -S c_core -B build-c -DCMAKE_BUILD_TYPE=Debug && cmake --build build-c && ctest --test-dir build-c --output-on-failure && \"${workspaceFolder}/.venv/bin/python\" tests/verify.py build-c/eml_c_cli && \"${workspaceFolder}/.venv/bin/python\" tools/window_to_stdin.py --row 0 | build-c/eml_c_cli",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: Chapter 5 lab 1",
+      "type": "shell",
+      "command": "cmake -S c_core -B build-c -DCMAKE_BUILD_TYPE=Debug && cmake --build build-c && ctest --test-dir build-c --output-on-failure && \"${workspaceFolder}/.venv/bin/python\" tests/verify.py build-c/eml_c_cli && \"${workspaceFolder}/.venv/bin/python\" tools/window_to_stdin.py --row 0 | build-c/eml_c_cli",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: Chapter 7 lab 1",
+      "type": "shell",
+      "command": "\"${workspaceFolder}/.venv/bin/python\" neural/train_neural.py && \"${workspaceFolder}/.venv/bin/python\" tools/export_c.py && cmake -S c_core -B build-c -DCMAKE_BUILD_TYPE=Debug && cmake --build build-c && \"${workspaceFolder}/.venv/bin/python\" neural/verify.py build-c/eml_c_cli neural",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: Chapter 9 lab 1",
+      "type": "shell",
+      "command": "cmake -S c_core -B build-c -DCMAKE_BUILD_TYPE=Debug && cmake --build build-c && ctest --test-dir build-c --output-on-failure",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: Chapter 10 lab 1",
+      "type": "shell",
+      "command": "\"${workspaceFolder}/.venv/bin/python\" applications/motion_train.py && cmake -S applications -B build-app -DCMAKE_BUILD_TYPE=Debug && cmake --build build-app && \"${workspaceFolder}/.venv/bin/python\" applications/verify.py build-app/sensing_cli",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: Chapter 11 lab 1",
+      "type": "shell",
+      "command": "cmake -S applications -B build-app -DCMAKE_BUILD_TYPE=Debug && cmake --build build-app && \"${workspaceFolder}/.venv/bin/python\" applications/verify.py build-app/sensing_cli",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: Chapter 12 lab 1",
+      "type": "shell",
+      "command": "cmake -S perception -B build-perception -DCMAKE_BUILD_TYPE=Debug && cmake --build build-perception && ctest --test-dir build-perception --output-on-failure && \"${workspaceFolder}/.venv/bin/python\" perception/evaluate_events.py build-perception/policy_trace",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: Chapter 13 lab 1",
+      "type": "shell",
+      "command": "\"${workspaceFolder}/.venv/bin/python\" perception/vision_train.py && cmake -S perception -B build-perception -DCMAKE_BUILD_TYPE=Debug && cmake --build build-perception && ctest --test-dir build-perception --output-on-failure && \"${workspaceFolder}/.venv/bin/python\" perception/verify.py build-perception/libperception.so",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: Chapter 14 lab 1",
+      "type": "shell",
+      "command": "\"${workspaceFolder}/.venv/bin/python\" perception/boxes.py",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: Chapter 15 lab 1",
+      "type": "shell",
+      "command": "\"${workspaceFolder}/.venv/bin/python\" perception/anomaly_train.py && cmake -S perception -B build-perception -DCMAKE_BUILD_TYPE=Debug && cmake --build build-perception && ctest --test-dir build-perception --output-on-failure",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: Chapter 16 lab 1",
+      "type": "shell",
+      "command": "\"${workspaceFolder}/.venv/bin/python\" systems/budget.py",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: Chapter 19 lab 1",
+      "type": "shell",
+      "command": "cmake -S systems -B build-systems -DCMAKE_BUILD_TYPE=Debug && cmake --build build-systems && ctest --test-dir build-systems --output-on-failure",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: Chapter 20 lab 1",
+      "type": "shell",
+      "command": "\"${workspaceFolder}/.venv/bin/python\" systems/release_gate.py",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: Chapter 22 lab 1",
+      "type": "shell",
+      "command": "\"${workspaceFolder}/.venv/bin/python\" systems/run_all.py",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

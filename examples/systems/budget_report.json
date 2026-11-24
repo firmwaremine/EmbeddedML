@@ -1,0 +1,16 @@
+{
+  "illustrative_peak_live_payload_bytes": 1292,
+  "illustrative_serial_latency_us": 6000,
+  "illustrative_period_slack_us": 4000,
+  "illustrative_charge_mC": "2.994",
+  "illustrative_energy_mJ_at_3_3V": "9.8802",
+  "illustrative_average_current_mA": "2.994",
+  "fifo_response_ms": [
+    6,
+    6,
+    15,
+    11
+  ],
+  "deadline_misses_at_10ms": 2,
+  "scope": "invented values; no measured device timing/power or schedulability proof"
+}

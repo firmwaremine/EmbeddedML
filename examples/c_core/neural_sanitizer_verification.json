@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "windows": 720,
+  "integer_accumulators": "exact match",
+  "maximum_absolute_float_logit_error": 1.3187306615591865e-06,
+  "quantization_boundary_cases": 4,
+  "invalid_input_cases": 6
+}

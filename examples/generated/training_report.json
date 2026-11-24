@@ -1,0 +1,92 @@
+{
+  "generator_seed_rule": "9127 + session",
+  "window_samples": 64,
+  "sample_rate_hz_assumed": 128,
+  "synthetic": true,
+  "training_sessions": [
+    "0",
+    "1",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+  "model_sha256": "b2da26b2d07d836a7690cd021fcff4d12cd299d1b87007529bf09e4215fe36c7",
+  "reports": {
+    "train": {
+      "n": 432,
+      "confusion": [
+        [
+          144,
+          0,
+          0
+        ],
+        [
+          0,
+          144,
+          0
+        ],
+        [
+          0,
+          0,
+          144
+        ]
+      ],
+      "accuracy": 1.0
+    },
+    "validation": {
+      "n": 144,
+      "confusion": [
+        [
+          48,
+          0,
+          0
+        ],
+        [
+          0,
+          48,
+          0
+        ],
+        [
+          0,
+          0,
+          48
+        ]
+      ],
+      "accuracy": 1.0
+    },
+    "test": {
+      "n": 144,
+      "confusion": [
+        [
+          48,
+          0,
+          0
+        ],
+        [
+          0,
+          48,
+          0
+        ],
+        [
+          0,
+          0,
+          48
+        ]
+      ],
+      "accuracy": 1.0
+    }
+  }
+}

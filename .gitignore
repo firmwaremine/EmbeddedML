@@ -1,0 +1,17 @@
+**/build*/
+**/.venv/
+**/__pycache__/
+*.py[cod]
+**/managed_components/
+firmware/korvo_mic_lab/sdkconfig
+firmware/korvo_mic_lab/sdkconfig.usb
+**/sdkconfig.old
+**/host_test
+*.o
+*.a
+*.so
+*.elf
+*.bin
+*.map
+.DS_Store
+Thumbs.db

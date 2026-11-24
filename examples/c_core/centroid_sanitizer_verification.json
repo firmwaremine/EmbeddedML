@@ -1,0 +1,7 @@
+{
+  "windows_checked": 720,
+  "invalid_cli_cases": 7,
+  "max_absolute_feature_error": 3.157871841796833e-08,
+  "max_absolute_distance_error": 2.1077357494903026e-06,
+  "status": "PASS"
+}

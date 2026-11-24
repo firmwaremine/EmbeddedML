@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "motion_windows": 1080,
+  "rotation_checks": 1,
+  "motion_invalid_cases": 5,
+  "maximum_motion_feature_error": 4.9975585891814944e-09,
+  "maximum_motion_distance_error": 9.532629761110911e-07,
+  "audio_fixtures": 6,
+  "audio_invalid_cases": 8,
+  "maximum_audio_log_power_error": 9.492817731882042e-07,
+  "oracle": "NumPy 2.2.6 float64 rfft; C direct DFT; tolerance 3e-6",
+  "hardware": "not run"
+}

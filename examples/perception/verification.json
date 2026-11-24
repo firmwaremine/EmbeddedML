@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "vision_windows": 900,
+  "max_feature_error": 0,
+  "max_squared_distance_error": 1.7763568394002505e-15,
+  "resize_fixtures_byte_exact": 6,
+  "anomaly_known_score": 3.0,
+  "hardware": "not run"
+}

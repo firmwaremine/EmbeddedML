@@ -1,0 +1,11 @@
+{
+  "iou_overlap": 0.3333333333333333,
+  "nms_kept_original_indices": [
+    0,
+    2,
+    3
+  ],
+  "nms_threshold": 0.5,
+  "box_convention": "half-open x0,y0,x1,y1",
+  "scope": "geometry unit fixtures only, not detection accuracy"
+}

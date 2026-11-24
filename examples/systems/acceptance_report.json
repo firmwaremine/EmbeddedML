@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "platform": "Linux-7.3.4-x86_64-with-glibc2.35",
+  "python": "3.10.12",
+  "commands_succeeded": 19,
+  "scope": "ordinary Linux host builds and listed fixtures only; no hardware/target or production release approval"
+}
