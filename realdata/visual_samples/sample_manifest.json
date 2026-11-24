@@ -1,0 +1,127 @@
+[
+  {
+    "kind": "photo",
+    "label": "daisy",
+    "path": "photos/daisy/100080576_f52e8ee070_n.jpg",
+    "sha256": "7f9de25827f56d28a5240aa0f5901799c259b41db36b3fa69d7cb1240e2ac67a",
+    "split": "train",
+    "attribution": "daisy/100080576_f52e8ee070_n.jpg CC-BY by mario - https://www.flickr.com/photos/64738468@N00/100080576/"
+  },
+  {
+    "kind": "photo",
+    "label": "daisy",
+    "path": "photos/daisy/10140303196_b88d3d6cec.jpg",
+    "sha256": "42241bfdb0ffeb1012d1899d4c44bcfd823d98302edd99cccfcc1c9b699d080f",
+    "split": "train",
+    "attribution": "daisy/10140303196_b88d3d6cec.jpg CC-BY by Irene Grassi - https://www.flickr.com/photos/sun_sand_sea/10140303196/"
+  },
+  {
+    "kind": "photo",
+    "label": "dandelion",
+    "path": "photos/dandelion/10200780773_c6051a7d71_n.jpg",
+    "sha256": "23193e7c045e862dc2e555827d43756545c3a17490b84b33256ab04d210cf3e1",
+    "split": "train",
+    "attribution": "dandelion/10200780773_c6051a7d71_n.jpg CC-BY by waferboard - https://www.flickr.com/photos/waferboard/10200780773/"
+  },
+  {
+    "kind": "photo",
+    "label": "dandelion",
+    "path": "photos/dandelion/10294487385_92a0676c7d_m.jpg",
+    "sha256": "72c716f3f242547156c047483db5898b7cccce42a4059fdf671b56c25673670b",
+    "split": "train",
+    "attribution": "dandelion/10294487385_92a0676c7d_m.jpg CC-BY by quapan - https://www.flickr.com/photos/hinkelstone/10294487385/"
+  },
+  {
+    "kind": "photo",
+    "label": "roses",
+    "path": "photos/roses/10090824183_d02c613f10_m.jpg",
+    "sha256": "6e42dd14083dcddd8d5db6d9893cca3ca3df9a95bd070d111ac3e2a87322ec90",
+    "split": "train",
+    "attribution": "roses/10090824183_d02c613f10_m.jpg CC-BY by Von Fumetti - https://www.flickr.com/photos/104286287@N06/10090824183/"
+  },
+  {
+    "kind": "photo",
+    "label": "roses",
+    "path": "photos/roses/102501987_3cdb8e5394_n.jpg",
+    "sha256": "668205384fe3b77d8a2a56e50a8db14de78399b1d22aeb261e8d9ed9adfc910b",
+    "split": "train",
+    "attribution": "roses/102501987_3cdb8e5394_n.jpg CC-BY by Elaine with Grey Cats - https://www.flickr.com/photos/elainegreycats/102501987/"
+  },
+  {
+    "kind": "photo",
+    "label": "sunflowers",
+    "path": "photos/sunflowers/1008566138_6927679c8a.jpg",
+    "sha256": "3ea595aefc826f5ddce16af7c8add9a6e3c8b4d66cdb3184e0073806aa75377f",
+    "split": "train",
+    "attribution": "sunflowers/1008566138_6927679c8a.jpg CC-BY by liz west - https://www.flickr.com/photos/calliope/1008566138/"
+  },
+  {
+    "kind": "photo",
+    "label": "sunflowers",
+    "path": "photos/sunflowers/1022552002_2b93faf9e7_n.jpg",
+    "sha256": "6f2dda7667fd04b9b3ae1579b216766ae57b086dcc370af2522950b753cd4282",
+    "split": "train",
+    "attribution": "sunflowers/1022552002_2b93faf9e7_n.jpg CC-BY by emerson12 - https://www.flickr.com/photos/emerson12/1022552002/"
+  },
+  {
+    "kind": "photo",
+    "label": "tulips",
+    "path": "photos/tulips/100930342_92e8746431_n.jpg",
+    "sha256": "64abdcbc2fd771300b6a5f927f4902a9ff548d95e5770146e6ee0f67eb2ffd86",
+    "split": "train",
+    "attribution": "tulips/100930342_92e8746431_n.jpg CC-BY by Jackie Curry - https://www.flickr.com/photos/octoberdog/100930342/"
+  },
+  {
+    "kind": "photo",
+    "label": "tulips",
+    "path": "photos/tulips/10094731133_94a942463c.jpg",
+    "sha256": "78ea50f581c3a70d5c45f8a3ae85ccec6998e3916e32f9d5d549ee2c47223868",
+    "split": "train",
+    "attribution": "tulips/10094731133_94a942463c.jpg CC-BY by Jocelyn Kinghorn - https://www.flickr.com/photos/joceykinghorn/10094731133/"
+  },
+  {
+    "kind": "speech",
+    "label": "go",
+    "recorded_word": "go",
+    "path": "speech/go/0137b3f4_nohash_0.wav",
+    "sha256": "57f26f94ed349682cc5da737f1d7ea4045f53a4fce5fc65a1296b9d453d4983c",
+    "split": "train",
+    "speaker": "0137b3f4"
+  },
+  {
+    "kind": "speech",
+    "label": "no",
+    "recorded_word": "no",
+    "path": "speech/no/0137b3f4_nohash_1.wav",
+    "sha256": "ccf4d548a603d7ff503e93dd6153a5f9b630be064d0efcc06bda6a8719690430",
+    "split": "train",
+    "speaker": "0137b3f4"
+  },
+  {
+    "kind": "speech",
+    "label": "stop",
+    "recorded_word": "stop",
+    "path": "speech/stop/0135f3f2_nohash_0.wav",
+    "sha256": "b63a93e490fa8603d18a7d1e60d7b2424bf5383f239b863082c86e1d403264b6",
+    "split": "train",
+    "speaker": "0135f3f2"
+  },
+  {
+    "kind": "speech",
+    "label": "yes",
+    "recorded_word": "yes",
+    "path": "speech/yes/00f0204f_nohash_0.wav",
+    "sha256": "4c619b0c00e0e281df3c3981db329249cdc42bd94a892e41a81949b10bf83229",
+    "split": "train",
+    "speaker": "00f0204f"
+  },
+  {
+    "kind": "speech",
+    "label": "other",
+    "recorded_word": "down",
+    "path": "speech/down/00b01445_nohash_1.wav",
+    "sha256": "2e018e932d23ce0d1eefe959aa45a4f74870eb9602e429b4d65f8b51d8d91119",
+    "split": "train",
+    "speaker": "00b01445"
+  }
+]

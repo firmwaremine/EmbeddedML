@@ -1,0 +1,51 @@
+{
+  "test_clips": 1377,
+  "label_agreement": 1377,
+  "max_logmel_abs_error": 1.9073486328125e-06,
+  "max_logit_abs_error": 3.0517578125e-05,
+  "c_confusion_matrix": [
+    [
+      110,
+      34,
+      0,
+      1,
+      36
+    ],
+    [
+      23,
+      110,
+      0,
+      2,
+      30
+    ],
+    [
+      3,
+      1,
+      150,
+      0,
+      18
+    ],
+    [
+      0,
+      3,
+      1,
+      154,
+      11
+    ],
+    [
+      24,
+      20,
+      15,
+      13,
+      618
+    ]
+  ],
+  "c_test_accuracy": 0.8293391430646333,
+  "host_ms": {
+    "median": 0.8669149999604997,
+    "p95": 0.9100275999799123,
+    "maximum": 1.139614000067013
+  },
+  "scope": "Host x86-64 measurements, not Korvo timing; float tolerance, not integer exactness",
+  "model_header_sha256": "d3896dbf50088113a2f93afed5f117abc8c1b908da9bd93def3d0761f5fa696c"
+}

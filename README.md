@@ -18,3 +18,8 @@ The book and website reader are distributed separately. No hosted book URL is as
 ## License
 
 Original code in this repository is licensed under the MIT License. See LICENSE. Third-party dependency licenses and notices remain applicable; see `firmware/korvo_mic_lab/THIRD_PARTY.md`. Book text, product photography and branding are not included in this source repository and are not licensed by this code license.
+
+
+## Real source data and trained examples
+
+The [realdata](realdata/) directory contains all3,670flower photos and8,000recorded speech WAVs used in the book, with split/hash manifests, attribution, training/export scripts, saved artifacts and sample/result visuals. It is a large download. Data and pretrained values retain separate licenses, see realdata/README.md. These results are host/cross-build evidence, not claimed physical-board measurements.
