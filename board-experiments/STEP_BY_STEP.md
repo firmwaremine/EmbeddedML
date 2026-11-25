@@ -61,7 +61,7 @@ Nothing here has run on a board yet. Your logs are the first evidence.
 ### 1.2 Build
 
 1. Run **ESP-IDF: Build Your Project**.
-2. Expected: the output ends with the app size, about 623,744 bytes, and no error lines.
+2. Expected: the output ends with the app size, about 623,680 bytes, and no error lines.
 3. **Stop if** the build fails. Send me the full build output.
 
 ### 1.3 Flash and monitor
@@ -83,15 +83,27 @@ Nothing here has run on a board yet. Your logs are the first evidence.
 ### 1.5 Gate 2: the microphone works
 
 1. Find the capture line. It reports 16000 Hz, stereo, 16-bit, MIC1/MIC2 and gain 24 dB.
-2. Stay silent for at least 60 seconds. Count `GAP overflow=` warnings. The right number is zero. The log line `blocks=... ovf=... skipped=...` also prints `skipped`, the count of one-second windows the inference task could not start because it was still busy. It should stay at or near zero.
-3. Speak at normal volume near the board. You should see `KWS` lines with a changing `rms` value:
+2. Stay silent for at least 60 seconds. The firmware starts in **quiet log mode** (see 1.5a), so a silent room prints only a `STATUS` line about every 30 seconds:
+
+   ```
+   STATUS t_ms=... windows=... speech_windows=0 events=0 ovf=0 skipped=0 errors=0 short=0 heap=...
+   ```
+
+   Check `ovf=0`, `skipped=0`, `errors=0` and `short=0` on every STATUS line, and that no `GAP overflow` warning appears. `skipped` counts one-second windows the inference task could not start because it was still busy. It should stay at or near zero.
+3. Speak at normal volume near the board. In quiet mode a `KWS` line prints only for a one-second window whose `rms` reaches 0.005 (and for every event), so you see lines only while you speak:
 
    ```
    KWS t_ms=... label=<word> confidence=0.xxxx rms=0.0xxxxx front_us=... infer_us=... event=0 heap=... stack=...
    ```
 
-4. Expected: `rms` rises when you speak and falls when you stop.
-5. **Stop if** you see repeated `GAP overflow` warnings. The firmware is not keeping up and an accuracy run would be invalid. Save the log.
+4. Expected: KWS lines start when you speak, with `rms` above 0.005, and stop when you stop. An `event=1` line is printed for a recognised target word.
+5. **Stop if** you see repeated `GAP overflow` warnings, any `SKIPPED windows` warning that keeps growing, or `ovf` above 0 in a STATUS line. The firmware is not keeping up and an accuracy run would be invalid. Save the log. These faults are never hidden in quiet mode.
+
+### 1.5a Quiet log (default) and verbose log
+
+- **Quiet (default, use it for the trial):** the monitor shows boot lines, `REPLAY`, `CAPTURE`, a `STATUS` line about every 30 seconds, a `KWS` line for every window with `rms` of at least 0.005, and every event. A window below that level, such as room noise, is not printed, so counts of silent windows are in the STATUS line (`windows`, `speech_windows`, `events`). Warnings and errors always print.
+- **Verbose (for debugging):** every window prints a `KWS` line and about once a second a `blocks=...` line and two `slot` lines print. To switch: run **ESP-IDF: SDK Configuration Editor**, open **Korvo KWS experiment**, tick **Verbose log**, save, then build and flash again. If the menu entry is missing, run **ESP-IDF: Full Clean** first, then build.
+- A word spoken at normal volume gives about eight to ten printed `KWS` lines (one every 0.1 s while the word is in the one-second window), usually with one `event=1`.
 
 ### 1.6 What the log fields mean
 

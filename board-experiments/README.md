@@ -101,7 +101,7 @@ Fix in this version: the audio task (core 0) only reads the microphone and fills
 
 | Project | App size | SHA-256 |
 | --- | --- | --- |
-| korvo_kws (native USB) | 623,744 bytes | `7a03115338851fb0315cfc7a1619d461773562183ddeb2ff1add4c10bae97faa` |
+| korvo_kws (native USB) | 623,680 bytes | `b5596de4bd32fd279897424f3a350b6a12c72c49a6d3fe50673f7ab367feaf49` |
 | korvo_vision | 4,023,984 bytes | `8fcbd304058e078c4f024873c5845b4ac0279c8575b3d65af476f0161e4aa6b3` |
 | korvo_camera_health | 228,208 bytes | `d9e8a58538da808d616066b24d34d95c87d9d5922ae85b356efad3840f9f1fce` |
 

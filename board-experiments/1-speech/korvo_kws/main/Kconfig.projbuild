@@ -1,0 +1,12 @@
+menu "Korvo KWS experiment"
+    config KORVO_KWS_VERBOSE_LOG
+        bool "Verbose log: print every window and a status block every second"
+        default n
+        help
+            Off (default, quiet log): a KWS line prints only for a one-second window whose
+            rms reaches the speech gate (0.005) and for every event, plus a STATUS line
+            about every 30 seconds. Faults are never hidden: GAP overflow, read errors,
+            feature failures and skipped windows print as warnings or errors at once.
+            On: every window prints a KWS line, and a blocks line with two slot lines
+            prints about once a second.
+endmenu

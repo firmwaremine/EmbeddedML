@@ -28,7 +28,8 @@ static bool latched;
 static int64_t last_event_us=-2000000;
 static int16_t window_pcm[16000];
 static volatile bool window_busy,reset_req;
-static volatile uint32_t skipped_windows;
+static volatile uint32_t skipped_windows,window_count,speech_count,event_count;
+#define SPEECH_RMS 0.005f
 static TaskHandle_t infer_task_handle;
 static void reset_context(void){filled=write_pos=since_infer=0;reset_req=true;}
 #include <inttypes.h>
@@ -61,11 +62,15 @@ static void infer_task(void *arg){
       int64_t done=esp_timer_get_time();float confidence=kws_confidence(scores,label);
       float energy=0;for(int i=0;i<16000;i++){float x=ordered[i]/32768.0f;energy+=x*x;}
       float rms=sqrtf(energy/16000.0f);
-      bool candidate=label<4 && confidence>=0.90f && rms>=0.005f;
+      bool candidate=label<4 && confidence>=0.90f && rms>=SPEECH_RMS;
       if(candidate){streak=last_label==label?streak+1:1;release_count=0;last_label=label;}
       else{streak=0;last_label=-1;if(++release_count>=3)latched=false;}
       bool event=candidate && streak>=1 && !latched && done-last_event_us>=1000000;
-      if(event){latched=true;last_event_us=done;}
+      if(event){latched=true;last_event_us=done;event_count++;}
+      window_count++;if(rms>=SPEECH_RMS)speech_count++;
+#ifndef CONFIG_KORVO_KWS_VERBOSE_LOG
+      if(rms>=SPEECH_RMS||event)
+#endif
       ESP_LOGI(TAG,"KWS t_ms=%" PRId64 " label=%s confidence=%.4f rms=%.6f front_us=%" PRId64 " infer_us=%" PRId64 " event=%d heap=%u stack=%u",done/1000,labels[label],confidence,rms,infer_start-feature_start,done-infer_start,event,(unsigned)heap_caps_get_free_size(MALLOC_CAP_INTERNAL),(unsigned)uxTaskGetStackHighWaterMark(NULL));
       window_busy=false;
     }
@@ -146,7 +151,7 @@ void app_main(void) {
   xTaskCreatePinnedToCore(infer_task,"kws_infer",8192,NULL,2,&infer_task_handle,1);
   vTaskPrioritySet(NULL,5);
   uint64_t blocks = 0;
-  uint32_t errors = 0, short_reads = 0, last_ovf = 0;
+  uint32_t errors = 0, short_reads = 0, last_ovf = 0, last_skipped = 0;
   int64_t max_us = 0, start_us = esp_timer_get_time();
   for (;;) {
     size_t got = 0;
@@ -196,6 +201,21 @@ void app_main(void) {
       portENTER_CRITICAL(&overflow_lock);
       uint32_t ovf = rx_overflows;
       portEXIT_CRITICAL(&overflow_lock);
+      uint32_t skipped_now = skipped_windows;
+      if (skipped_now != last_skipped) {
+        ESP_LOGW(TAG, "SKIPPED windows=%" PRIu32 " (inference task still busy)", skipped_now);
+        last_skipped = skipped_now;
+      }
+#ifndef CONFIG_KORVO_KWS_VERBOSE_LOG
+      if (blocks % 1920 == 0)
+        ESP_LOGI(TAG,
+                 "STATUS t_ms=%" PRId64 " windows=%" PRIu32 " speech_windows=%" PRIu32
+                 " events=%" PRIu32 " ovf=%" PRIu32 " skipped=%" PRIu32 " errors=%" PRIu32
+                 " short=%" PRIu32 " heap=%u",
+                 (esp_timer_get_time() - start_us) / 1000, (uint32_t)window_count,
+                 (uint32_t)speech_count, (uint32_t)event_count, ovf, skipped_now, errors,
+                 short_reads, (unsigned)heap_caps_get_free_size(MALLOC_CAP_INTERNAL));
+#else
       ESP_LOGI(TAG,
                "blocks=%" PRIu64 " errors=%" PRIu32 " short=%" PRIu32
                " ovf=%" PRIu32 " delta_ovf=%" PRIu32 " elapsed_ms=%" PRId64
@@ -204,13 +224,13 @@ void app_main(void) {
                (esp_timer_get_time() - start_us) / 1000, (uint32_t)skipped_windows, max_us,
                (unsigned)heap_caps_get_free_size(MALLOC_CAP_INTERNAL),
                (unsigned)heap_caps_get_minimum_free_size(MALLOC_CAP_INTERNAL));
-      last_ovf = ovf;
       for (unsigned c = 0; c < 2; c++)
         ESP_LOGI(TAG,
                  "slot%u latest mean=%.6f rms=%.6f ac=%.6f peak=%.6f mad=%.6f "
                  "clip=%u",
                  c, f[c].mean, f[c].rms, f[c].ac_rms, f[c].peak,
                  f[c].mean_abs_delta, f[c].clipped);
+#endif
     }
   }
 }
