@@ -283,4 +283,5 @@ Partial runs and failures help. A successful flash or a photo of the board is no
 | Monitor shows garbage | Check you flashed the build for this folder and selected the right port. |
 | Boot log scrolled past | Press the board's reset button while the monitor is open. |
 | Build says wrong SDK | Re-run **ESP-IDF: Configure ESP-IDF Extension** and choose 5.3.6. |
+| Build fails with `prefix_map` not found or an `esp_libc` resolve error | Two ESP-IDF versions are mixed in one build. Typical cause: the extension points at one install (for example `C:\esp\v6.1`) while the `IDF_PATH` environment variable points at another (`C:\esp\v5.3.6`). Fix: run **ESP-IDF: Select Current ESP-IDF Version** and choose 5.3.6, delete the project's `build-usb` folder (**ESP-IDF: Full Clean** or delete it in the Explorer), close and reopen the ESP-IDF terminal, then build again. Check that the extension and `IDF_PATH` both name the 5.3.6 folder. |
 | Anything else | Send the full log and what you did. Do not change the pin map or tolerances. |
