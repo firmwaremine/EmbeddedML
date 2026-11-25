@@ -62,7 +62,7 @@ Partial runs and failures are useful. A successful flash or a photo of the board
 
 | Claim | Where it was checked |
 | --- | --- |
-| Speech model: 82.93% clip accuracy on 1,377 held-out clips, speaker-disjoint split (5,384 / 1,239 / 1,377). Pure C matches the training code on 1,377 of 1,377 labels | Computer |
+| Speech model: 82.93% clip accuracy on 1,377 held-out clips, speaker-disjoint split (5,384 / 1,239 / 1,377). Pure C matches the training code on 1,377 of 1,377 labels (checked with the earlier double-precision C build; the firmware now uses single-precision float and agrees with that build on 1,377 of 1,377 labels, largest log-mel difference 0.0035, largest logit difference 0.000135) | Computer |
 | Speech event policy found 55 of 80 targets in a constructed 160-clip stream, with 25 misses and 27 unmatched events. It influenced the design, so it is a development check, not a final benchmark | Computer |
 | CNN: 80.90% on 555 held-out flower photos. All 156 graph nodes match PyTorch on all 555 images. Max output error 0.0000465 | Computer |
 | CNN memory: 405,504-byte arena, 3,719,572-byte float weights, 4,023,984-byte app | Build output |
@@ -89,13 +89,19 @@ All three apps were rebuilt and checked against ESP-IDF **5.3.6** (tag `v5.3.6`)
 
 Do not mix SDK versions between projects. If you install another ESP-IDF, select 5.3.6 with **ESP-IDF: Select Current ESP-IDF Version** before building.
 
+## First board run and the real-time fix (26 Nov 2026)
+
+The first build of korvo_kws booted on the target board, passed the REPLAY and SELFTEST checks and captured audio. It also printed `GAP overflow` repeatedly. Cause: the feature step ran in double precision, which the ESP32-S3 emulates in software, and took about 957 ms per one-second window in the same task that reads the microphone. The microphone queue filled and overflowed, so every window was reset. That run is not valid evidence for recognition.
+
+Fix in this version: the audio task (core 0) only reads the microphone and fills a ring; a second task (core 1) runs the features, the network and the event policy on a snapshot; the FFT is single-precision with a precomputed twiddle table; features are normalised once per window; the I2S queue is 32 descriptors (0.512 s). Single-precision results were compared with the earlier build on all 1,377 held-out clips (`tests/float_parity.py`): 1,377 of 1,377 labels agree, largest log-mel difference 0.0035, largest logit difference 0.000135. The expected speed-up is an estimate until a board log confirms it: look at `front_us` on the KWS lines and at `GAP overflow` and `skipped` in the log.
+
 ## Prebuilt binaries
 
 `prebuilt/` folders hold the cross-built binaries as evidence, with `SHA256SUMS`. Rebuild and flash through the ESP-IDF extension so configuration and flash offsets stay together. Do not flash a bare `.bin` to a guessed address.
 
 | Project | App size | SHA-256 |
 | --- | --- | --- |
-| korvo_kws (native USB) | 623,984 bytes | `81885532ef02852a68b912cf9c49fad5af5244ee06a98f4457d1a4ce4e3580ba` |
+| korvo_kws (native USB) | 623,744 bytes | `7a03115338851fb0315cfc7a1619d461773562183ddeb2ff1add4c10bae97faa` |
 | korvo_vision | 4,023,984 bytes | `8fcbd304058e078c4f024873c5845b4ac0279c8575b3d65af476f0161e4aa6b3` |
 | korvo_camera_health | 228,208 bytes | `d9e8a58538da808d616066b24d34d95c87d9d5922ae85b356efad3840f9f1fce` |
 

@@ -17,11 +17,20 @@
 static int16_t history_pcm[16000];
 static float mel_features[1176],scores[5];
 static const char *labels[]={"go","no","stop","yes","other"};
-static unsigned filled,write_pos,since_infer,streak,release_count;
+/* Two tasks. The audio task (core 0, higher priority) only reads the microphone
+   and fills the ring. The inference task (core 1) gets a snapshot of the last
+   second, runs features and the network, and applies the event policy. Policy state
+   (streak, latch) belongs to the inference task alone. */
+static unsigned filled,write_pos,since_infer;
+static unsigned streak,release_count;
 static int last_label=-1;
 static bool latched;
 static int64_t last_event_us=-2000000;
-static void reset_context(void){filled=write_pos=since_infer=streak=release_count=0;last_label=-1;latched=false;}
+static int16_t window_pcm[16000];
+static volatile bool window_busy,reset_req;
+static volatile uint32_t skipped_windows;
+static TaskHandle_t infer_task_handle;
+static void reset_context(void){filled=write_pos=since_infer=0;reset_req=true;}
 #include <inttypes.h>
 #include <stdio.h>
 #define FRAMES 256
@@ -39,6 +48,28 @@ static bool IRAM_ATTR on_overflow(i2s_chan_handle_t h, i2s_event_data_t *e,
   rx_overflows++;
   portEXIT_CRITICAL_ISR(&overflow_lock);
   return false;
+}
+static void infer_task(void *arg){
+  (void)arg;
+  for(;;){
+    ulTaskNotifyTake(pdTRUE,portMAX_DELAY);
+    {
+      const int16_t *ordered=window_pcm;
+      if(reset_req){reset_req=false;streak=release_count=0;last_label=-1;latched=false;}
+      int64_t feature_start=esp_timer_get_time();kws_features(ordered,mel_features);
+      int64_t infer_start=esp_timer_get_time();int label=kws_predict(mel_features,scores);
+      int64_t done=esp_timer_get_time();float confidence=kws_confidence(scores,label);
+      float energy=0;for(int i=0;i<16000;i++){float x=ordered[i]/32768.0f;energy+=x*x;}
+      float rms=sqrtf(energy/16000.0f);
+      bool candidate=label<4 && confidence>=0.90f && rms>=0.005f;
+      if(candidate){streak=last_label==label?streak+1:1;release_count=0;last_label=label;}
+      else{streak=0;last_label=-1;if(++release_count>=3)latched=false;}
+      bool event=candidate && streak>=1 && !latched && done-last_event_us>=1000000;
+      if(event){latched=true;last_event_us=done;}
+      ESP_LOGI(TAG,"KWS t_ms=%" PRId64 " label=%s confidence=%.4f rms=%.6f front_us=%" PRId64 " infer_us=%" PRId64 " event=%d heap=%u stack=%u",done/1000,labels[label],confidence,rms,infer_start-feature_start,done-infer_start,event,(unsigned)heap_caps_get_free_size(MALLOC_CAP_INTERNAL),(unsigned)uxTaskGetStackHighWaterMark(NULL));
+      window_busy=false;
+    }
+  }
 }
 void app_main(void) {
   int64_t replay_start=esp_timer_get_time();
@@ -69,7 +100,7 @@ void app_main(void) {
   ESP_ERROR_CHECK(i2c_master_probe(bus, 0x40, 1000));
   i2s_chan_handle_t rx;
   i2s_chan_config_t cc = I2S_CHANNEL_DEFAULT_CONFIG(I2S_NUM_0, I2S_ROLE_MASTER);
-  cc.dma_desc_num = 8;
+  cc.dma_desc_num = 32; /* 32 x 256 frames = 0.512 s of buffering */
   cc.dma_frame_num = FRAMES;
   ESP_ERROR_CHECK(i2s_new_channel(&cc, NULL, &rx));
   i2s_std_config_t sc = {
@@ -112,6 +143,8 @@ void app_main(void) {
   ESP_ERROR_CHECK(esp_codec_dev_set_in_gain(dev, 24.0f));
   ESP_LOGI(TAG, "CAPTURE 16000Hz stereo 16-bit; MIC1/MIC2; gain24dB; discard "
                 "first 0.256s");
+  xTaskCreatePinnedToCore(infer_task,"kws_infer",8192,NULL,2,&infer_task_handle,1);
+  vTaskPrioritySet(NULL,5);
   uint64_t blocks = 0;
   uint32_t errors = 0, short_reads = 0, last_ovf = 0;
   int64_t max_us = 0, start_us = esp_timer_get_time();
@@ -142,20 +175,11 @@ void app_main(void) {
       since_infer++;
     }
     if(filled==16000 && since_infer>=1600){
-      static int16_t ordered[16000];
-      for(int i=0;i<16000;i++)ordered[i]=history_pcm[(write_pos+i)%16000];
-      int64_t feature_start=esp_timer_get_time();kws_features(ordered,mel_features);
-      int64_t infer_start=esp_timer_get_time();int label=kws_predict(mel_features,scores);
-      int64_t done=esp_timer_get_time();float confidence=kws_confidence(scores,label);
-      double energy=0;for(int i=0;i<16000;i++){double x=ordered[i]/32768.0;energy+=x*x;}
-      float rms=sqrtf((float)(energy/16000));
-      bool candidate=label<4 && confidence>=0.90f && rms>=0.005f;
-      if(candidate){streak=last_label==label?streak+1:1;release_count=0;last_label=label;}
-      else{streak=0;last_label=-1;if(++release_count>=3)latched=false;}
-      bool event=candidate && streak>=1 && !latched && done-last_event_us>=1000000;
-      if(event){latched=true;last_event_us=done;}
-      ESP_LOGI(TAG,"KWS t_ms=%" PRId64 " label=%s confidence=%.4f rms=%.6f front_us=%" PRId64 " infer_us=%" PRId64 " event=%d heap=%u stack=%u",done/1000,labels[label],confidence,rms,infer_start-feature_start,done-infer_start,event,(unsigned)heap_caps_get_free_size(MALLOC_CAP_INTERNAL),(unsigned)uxTaskGetStackHighWaterMark(NULL));
-      since_infer=0;
+      if(!window_busy){
+        for(int i=0;i<16000;i++)window_pcm[i]=history_pcm[(write_pos+i)%16000];
+        window_busy=true;since_infer=0;
+        xTaskNotifyGive(infer_task_handle);
+      }else{skipped_windows++;}
     }
     mic_features f[2];
     int64_t t = esp_timer_get_time();
@@ -175,9 +199,9 @@ void app_main(void) {
       ESP_LOGI(TAG,
                "blocks=%" PRIu64 " errors=%" PRIu32 " short=%" PRIu32
                " ovf=%" PRIu32 " delta_ovf=%" PRIu32 " elapsed_ms=%" PRId64
-               " feat_max_us=%" PRId64 " heap=%u minheap=%u",
+               " skipped=%" PRIu32 " feat_max_us=%" PRId64 " heap=%u minheap=%u",
                blocks, errors, short_reads, ovf, ovf - last_ovf,
-               (esp_timer_get_time() - start_us) / 1000, max_us,
+               (esp_timer_get_time() - start_us) / 1000, (uint32_t)skipped_windows, max_us,
                (unsigned)heap_caps_get_free_size(MALLOC_CAP_INTERNAL),
                (unsigned)heap_caps_get_minimum_free_size(MALLOC_CAP_INTERNAL));
       last_ovf = ovf;

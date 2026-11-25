@@ -61,7 +61,7 @@ Nothing here has run on a board yet. Your logs are the first evidence.
 ### 1.2 Build
 
 1. Run **ESP-IDF: Build Your Project**.
-2. Expected: the output ends with the app size, about 623,984 bytes, and no error lines.
+2. Expected: the output ends with the app size, about 623,744 bytes, and no error lines.
 3. **Stop if** the build fails. Send me the full build output.
 
 ### 1.3 Flash and monitor
@@ -83,7 +83,7 @@ Nothing here has run on a board yet. Your logs are the first evidence.
 ### 1.5 Gate 2: the microphone works
 
 1. Find the capture line. It reports 16000 Hz, stereo, 16-bit, MIC1/MIC2 and gain 24 dB.
-2. Stay silent for at least 60 seconds. Count `GAP overflow=` warnings. The right number is zero.
+2. Stay silent for at least 60 seconds. Count `GAP overflow=` warnings. The right number is zero. The log line `blocks=... ovf=... skipped=...` also prints `skipped`, the count of one-second windows the inference task could not start because it was still busy. It should stay at or near zero.
 3. Speak at normal volume near the board. You should see `KWS` lines with a changing `rms` value:
 
    ```

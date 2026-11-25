@@ -2,8 +2,9 @@
   "sdk": "ESP-IDF 5.3.6",
   "codec": "1.6.2",
   "profile": "modified native USB Serial/JTAG",
-  "app_bytes": 623984,
-  "app_sha256": "81885532ef02852a68b912cf9c49fad5af5244ee06a98f4457d1a4ce4e3580ba",
+  "app_bytes": 623744,
+  "app_sha256": "7a03115338851fb0315cfc7a1619d461773562183ddeb2ff1add4c10bae97faa",
   "model_header_sha256": "d3896dbf50088113a2f93afed5f117abc8c1b908da9bd93def3d0761f5fa696c",
-  "hardware_executed": false
+  "hardware_executed": false,
+  "hardware_note": "This build has not run on a board. The previous build (double-precision FFT, 623,984 bytes) ran on the owner board on 26 Nov 2026: it passed REPLAY and SELFTEST and captured audio, but its feature step took about 957 ms per one-second window, the I2S queue overflowed and every window was reset. This build moves features and inference to a second task (core 1), uses a single-precision FFT with a precomputed twiddle table, normalises features once and enlarges the DMA queue to 32 descriptors. Agreement with the earlier double-precision build: 1377 of 1377 labels, max log-mel difference 0.00347, max logit difference 0.000135 (tests/float_parity.py)."
 }

@@ -11,6 +11,12 @@
       "problemMatcher": [
         "$gcc"
       ]
+    },
+    {
+      "label": "FirmwareMine: float FFT parity",
+      "type": "shell",
+      "command": "${command:python.interpreterPath} tests/float_parity.py",
+      "problemMatcher": []
     }
   ]
 }
