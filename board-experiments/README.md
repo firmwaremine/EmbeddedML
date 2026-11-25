@@ -4,7 +4,7 @@ Three experiments and one measurement worksheet for the **ESP32-S3-Korvo-2 V3.1*
 
 **Status: cross-built, not yet run on a board.** Every number below comes from a computer or a compiler. No board speed, accuracy, camera or power result exists until you run these and send back the logs.
 
-Start with the step-by-step guide: [docs/Korvo_Board_Run_Guide.pdf](docs/Korvo_Board_Run_Guide.pdf).
+**Start here: [STEP_BY_STEP.md](STEP_BY_STEP.md).** Numbered steps for setup, each run, expected output, what to save and when to stop. A shorter PDF version is in [docs/Korvo_Board_Run_Guide.pdf](docs/Korvo_Board_Run_Guide.pdf).
 
 ## The four folders
 
