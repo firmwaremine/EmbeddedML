@@ -12,7 +12,7 @@ class Capture(torch.fx.Interpreter):
 lib=ctypes.CDLL(str(O/'libvision.so'));fp=np.ctypeslib.ndpointer(dtype=np.float32,flags='C_CONTIGUOUS');CB=ctypes.CFUNCTYPE(None,ctypes.c_int,ctypes.POINTER(ctypes.c_float),ctypes.c_int);lib.vision_run.argtypes=[fp,fp,fp,fp,CB];lib.vision_run.restype=ctypes.c_int
 ledger=json.loads((O/'layers.json').read_text());arena=np.zeros(max(x['arena_float_offset']+x['floats'] for x in ledger),np.float32);weights=np.fromfile(O/'weights.f32',np.float32);out=np.zeros(5,np.float32);manifest=json.loads((R/'split_manifest.json').read_text());test=[x for x in manifest if x['split']==2];mean=np.array([.485,.456,.406],np.float32)[:,None,None];std=np.array([.229,.224,.225],np.float32)[:,None,None];layer_errors=np.zeros(len(ledger));max_logit_error=0.0;matches=0;times=[];predictions=[];reference=[]
 for i,row in enumerate(test):
- p=R.parent/'data/flower_photos'/row['path'];im=ImageOps.fit(Image.open(p).convert('RGB'),(96,96),method=Image.Resampling.BILINEAR);x=((np.asarray(im,dtype=np.float32).transpose(2,0,1)/255-mean)/std).copy();cap=Capture(g)
+ p=R.parents[1]/'realdata/data/flower_photos'/row['path'];im=ImageOps.fit(Image.open(p).convert('RGB'),(96,96),method=Image.Resampling.BILINEAR);x=((np.asarray(im,dtype=np.float32).transpose(2,0,1)/255-mean)/std).copy();cap=Capture(g)
  with torch.no_grad():expected=cap.run(torch.tensor(x[None])).numpy().ravel()
  def observe(layer,ptr,n):
   actual=np.ctypeslib.as_array(ptr,shape=(n,));layer_errors[layer]=max(layer_errors[layer],float(np.max(np.abs(actual-cap.values[layer]))))

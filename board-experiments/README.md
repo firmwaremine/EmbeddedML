@@ -103,5 +103,5 @@ Do not mix SDK versions between projects. If you install another ESP-IDF, select
 
 - The full training data is in [../realdata](../realdata/) (3,670 flower photos, 8,000 speech WAVs, hashes, split manifests, scripts). The `2-photo-cnn` folder does not duplicate the photos.
 - Original FirmwareMine code: MIT, see the repository `LICENSE`.
-- Third-party material keeps its own terms: Speech Commands (CC BY 4.0), flower photos (CC BY 2.0 per-image credits), MobileNetV3-Small pretrained values via torchvision (BSD notice), the Espressif `esp32-camera` driver (Apache 2.0, pinned to `f5257073e2a41c945eb618570a76063b8e4eed18`). See `THIRD_PARTY.md`, `FLOWER_ATTRIBUTION.txt`, `TORCHVISION_LICENSE.txt` and `../realdata/README.md`.
+- Third-party material keeps its own terms: Speech Commands (CC BY 4.0), flower photos (CC BY 2.0 per-image credits), MobileNetV3-Small pretrained values via torchvision (BSD notice), the Espressif `esp32-camera` driver (Apache 2.0, pinned to `f5257073e2a41c945eb618570a76063b8e4eed18`). See `1-speech/korvo_kws/THIRD_PARTY.md`, `2-photo-cnn/FLOWER_ATTRIBUTION.txt`, `2-photo-cnn/TORCHVISION_LICENSE.txt` and `../realdata/README.md`.
 - The MobileNetV3-Small weights are pretrained third-party values plus a newly trained head. They are not trained from scratch.

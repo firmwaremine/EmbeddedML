@@ -1,7 +1,7 @@
 from pathlib import Path
 import torch,torchvision,numpy as np,json,hashlib,time,platform
 from PIL import Image,ImageOps
-R=Path(__file__).resolve().parent;D=R.parent/'data/flower_photos';torch.set_num_threads(1);torch.manual_seed(20261124);np.random.seed(20261124)
+R=Path(__file__).resolve().parent;D=R.parents[1]/'realdata/data/flower_photos';torch.set_num_threads(1);torch.manual_seed(20261124);np.random.seed(20261124)
 labels=sorted(p.name for p in D.iterdir() if p.is_dir());weights=torchvision.models.MobileNet_V3_Small_Weights.IMAGENET1K_V1;model=torchvision.models.mobilenet_v3_small(weights=weights);model.classifier=torch.nn.Identity();model.eval()
 files=sorted(D.glob('*/*.jpg'));mean=np.array([.485,.456,.406],np.float32)[:,None,None];std=np.array([.229,.224,.225],np.float32)[:,None,None];manifest=[];start=time.perf_counter()
 if not (R/'embeddings.npz').exists():

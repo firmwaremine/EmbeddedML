@@ -13,7 +13,7 @@ This companion extends the host flower experiment with an original C11 implement
 
 ## VS Code host workflow
 
-Use the official Microsoft Python extension in a Linux/WSL environment for the Python experiments and a GCC toolchain for host C. Keep the IDF extension workflow in a separate project window. Create/select a Python environment with the pinned requirements. Download and extract the TensorFlow flower dataset into a sibling data/flower_photos directory. The split manifest checks the intended image identities. Run train_transfer.py only to retrain; it overwrites artifacts. export_c.py regenerates the C graph/weights from flower_model.pt. The host tasks below compile and verify the delivered artifacts without retraining.
+Use the official Microsoft Python extension in a Linux/WSL environment for the Python experiments and a GCC toolchain for host C. Keep the IDF extension workflow in a separate project window. Create/select a Python environment with the pinned requirements. The flower photographs are in the repository at ../realdata/data/flower_photos (relative to this folder); the scripts read them from there. The split manifest checks the intended image identities. Run train_transfer.py only to retrain; it overwrites artifacts. export_c.py regenerates the C graph/weights from flower_model.pt. The host tasks below compile and verify the delivered artifacts without retraining.
 
 Open this folder in VS Code. Terminal > Run Task > FirmwareMine: C vision parity compiles the shared library and runs all-image/all-node comparisons. This requires the dataset and pinned Python dependencies. The sanitized replay task needs only GCC and the included replay tensor. Host timings include observer overhead and must not be quoted as device timings.
 
@@ -25,7 +25,7 @@ Open korvo_vision as its own VS Code folder. Read RUN_ON_BOARD.md before flashin
 
 Original project code is provided as FirmwareMine teaching material. MobileNetV3-Small IMAGENET1K_V1 parameters are third-party pretrained assets obtained through torchvision, not original FirmwareMine weights. flower_model.pt and c_vision/weights.f32 contain these pretrained values plus the newly trained head. TORCHVISION_LICENSE.txt preserves the installed distribution's BSD notice; this does not warrant separate training-data/model rights for every downstream purpose. Check the upstream terms and intended use before further redistribution or commercial use. Do not describe these weights as newly trained from scratch.
 
-The flower photographs are not included. FLOWER_ATTRIBUTION.txt preserves their CC BY 2.0 credits. The included first-image replay tensor is a transformed image representation; preserve its attribution as well as the full list.
+The flower photographs are not in this folder; the repository keeps them in ../realdata. FLOWER_ATTRIBUTION.txt preserves their CC BY 2.0 credits. The included first-image replay tensor is a transformed image representation; preserve its attribution as well as the full list.
 
 Sources:
 - https://www.tensorflow.org/tutorials/load_data/images
