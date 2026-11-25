@@ -1,9 +1,9 @@
 {
   "board": "ESP32-S3-Korvo-2 V3.1, modified native USB",
-  "idf": "5.4.4",
+  "idf": "5.3.6",
   "status": "cross-build only, no physical run",
-  "binary_bytes": 4025232,
-  "binary_sha256": "da36efd9e2d98065b85cdbe9974e81949ef4a97dbe68baff61dec376691fe2fa",
+  "binary_bytes": 4023984,
+  "binary_sha256": "8fcbd304058e078c4f024873c5845b4ac0279c8575b3d65af476f0161e4aa6b3",
   "inference": "C11 original implementation, no external inference engine",
   "arena_bytes": 405504,
   "weights_bytes": 3719572,

@@ -1,5 +1,9 @@
 #include "vision_c.h"
+/* ESP-IDF 5.3.6 ships an empty struct in esp_etm.h, which -Wpedantic rejects. Relax only for this SDK header. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wpedantic"
 #include "driver/gpio.h"
+#pragma GCC diagnostic pop
 #include "esp_heap_caps.h"
 #include "esp_log.h"
 #include "esp_psram.h"

@@ -9,7 +9,7 @@ This companion extends the host flower experiment with an original C11 implement
 - All 156 intermediate nodes checked on all 555 images. Largest absolute intermediate error: 0.000322581. Final-logit error: 0.000046492.
 - 405,504-byte static activation arena and 3,719,572-byte float weights. Counts exclude image input, camera/decoder buffers, stacks and SDK memory.
 - Strict GCC C11 warnings pass. A recorded-input replay passes AddressSanitizer and UndefinedBehaviorSanitizer. That is one replay, not a full-dataset sanitizer claim.
-- ESP-IDF 5.4.4 ESP32-S3 cross-build succeeds. App image is 4,025,232 bytes. No board execution, target latency, live camera accuracy or power evidence exists yet.
+- ESP-IDF 5.3.6 ESP32-S3 cross-build succeeds. App image is 4,023,984 bytes. No board execution, target latency, live camera accuracy or power evidence exists yet.
 
 ## VS Code host workflow
 

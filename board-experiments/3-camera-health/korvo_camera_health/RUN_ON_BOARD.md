@@ -1,6 +1,6 @@
 # Korvo kit camera: identify, capture, inspect
 
-This is a separate ESP-IDF5.4.4 C capture diagnostic for ESP32-S3-Korvo-2 V3.1 with the native-USB modification. It is not the CNN replay application and does not run inference. Its job is to replace uncertainty about the camera with a detected sensor ID and a real saved frame.
+This is a separate ESP-IDF5.3.6 C capture diagnostic for ESP32-S3-Korvo-2 V3.1 with the native-USB modification. It is not the CNN replay application and does not run inference. Its job is to replace uncertainty about the camera with a detected sensor ID and a real saved frame.
 
 ## Camera basis
 
@@ -12,7 +12,7 @@ Board data0..7 are GPIO13,47,14,3,12,42,41,39. VSYNC21, HREF38, PCLK11, XCLK40 a
 
 ## VS Code
 
-1. Use official Espressif ESP-IDF extension2.3.0 with SDK5.4.4. Open this project as a separate VS Code folder. The profile enables octal PSRAM80MHz and caps flash at8MB. Check the actual module has at least8MB flash and octal PSRAM first. Stop on a mismatch.
+1. Use official Espressif ESP-IDF extension2.3.0 with SDK5.3.6. Open this project as a separate VS Code folder. The profile enables octal PSRAM80MHz and caps flash at8MB. Check the actual module has at least8MB flash and octal PSRAM first. Stop on a mismatch.
 2. Before flashing, save any existing firmware/data you need. Flashing replaces the current application and partition table. Do not use erase-flash or change eFuses. This uses a single7MiB factory partition with no OTA, matching the separate replay diagnostic layout.
 3. Choose ESP-IDF: Build your project, select the native-USB serial port, then ESP-IDF: Flash your project when ready to replace the application. This project is cross-built, not physically run yet.
 4. Configure monitor log saving in the extension/ESP-IDF monitor, then reset the board. Save the complete output, including all FM_JPEG_BEGIN/FM_HEX/FM_JPEG_END lines. Terminal scrollback alone may truncate the image. The hex transfer is intentionally slow and consumes more serial bytes than JPEG. Do not use its transfer time as capture latency.

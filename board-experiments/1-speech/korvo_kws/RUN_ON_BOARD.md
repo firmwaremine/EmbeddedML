@@ -1,6 +1,6 @@
 # Korvo recorded-speech experiment, run guide
 
-This is a research build, not a finished voice-control product. Use the previously verified modified ESP32-S3-Korvo-2 V3.1 native-USB connection. The speaker amplifier stays disabled. No further wiring change is required or recommended. The application is pure C on ESP-IDF 5.4.4 with esp_codec_dev 1.6.2. The SDK has mixed-language internals; there is no C++ model engine.
+This is a research build, not a finished voice-control product. Use the previously verified modified ESP32-S3-Korvo-2 V3.1 native-USB connection. The speaker amplifier stays disabled. No further wiring change is required or recommended. The application is pure C on ESP-IDF 5.3.6 with esp_codec_dev 1.6.2. The SDK has mixed-language internals; there is no C++ model engine.
 
 ## What is actually ready
 
@@ -17,7 +17,7 @@ Flashing replaces the application on the board. Save anything you need from its 
 ## VS Code workflow
 
 1. Open the `korvo_kws` folder as the workspace, not its `main` subfolder.
-2. Use the official Espressif ESP-IDF extension, version 2.3.0, as selected for this book. Configure ESP-IDF 5.4.4 through the extension's setup workflow.
+2. Use the official Espressif ESP-IDF extension, version 2.3.0, as selected for this book. Configure ESP-IDF 5.3.6 through the extension's setup workflow.
 3. Check the workspace settings: build folder `build-usb`, sdkconfig `sdkconfig.usb`, defaults `sdkconfig.usb.defaults`. The delivered workspace is configured for the modified native-USB/JTAG console.
 4. Use the extension command **ESP-IDF: Set Espressif Device Target**, choose ESP32-S3. Choose the native USB Serial/JTAG serial port through **ESP-IDF: Select Port to Use**.
 5. Use **ESP-IDF: Build Your Project**. Read the output and stop if there is an error. The delivered build was cross-compiled, but not run on physical hardware.

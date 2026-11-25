@@ -1,10 +1,11 @@
 # Capture-only subset: no JPEG encoding/decoding/conversion and no C++ sources.
+# ESP-IDF 5.3.6 selects the legacy SCCB driver (sccb.c). The upstream project uses sccb-ng.c only from IDF 5.4.
 idf_component_register(SRCS
  "upstream/driver/esp_camera.c"
  "upstream/driver/esp_camera_af.c"
  "upstream/driver/cam_hal.c"
  "upstream/driver/sensor.c"
- "upstream/driver/sccb-ng.c"
+ "upstream/driver/sccb.c"
  "upstream/target/esp32s3/ll_cam.c"
  "upstream/sensors/hm1055.c"
  "upstream/sensors/ov5640_af.c"

@@ -9,7 +9,7 @@ Verified source references:
 - Official board support source, pin/audio reference: https://github.com/espressif/esp-bsp/blob/master/bsp/esp32_s3_korvo_2/README.md . Retrieved checkout a current source snapshot; runtime is not dependent on that whole BSP.
 - Codec component: https://components.espressif.com/components/espressif/esp_codec_dev
 - Codec source: https://github.com/espressif/esp-adf/tree/master/components/esp_codec_dev
-- Exact IDF setup: https://docs.espressif.com/projects/esp-idf/en/v5.4.4/esp32s3/get-started/index.html
+- Exact IDF setup: https://docs.espressif.com/projects/esp-idf/en/v5.3.6/esp32s3/get-started/index.html
 - V3.1.2 schematic: https://dl.espressif.com/dl/schematics/SCH_ESP32-S3-Korvo-2_V3.1.2_20240116.pdf
 
 Pin contract: I2C SDA17/SCL18, I2S MCLK16/BCLK9/WS45/ADC DIN10. ES7210 MIC1/MIC2 are on-board analog microphones; MIC3 is associated with the documented echo reference. The app enables only MIC1/MIC2, not TDM/AEC. Speaker amplifier GPIO48 is driven low. No AEC, beamforming, noise suppression or speech recognition is claimed.

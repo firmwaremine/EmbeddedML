@@ -2,7 +2,7 @@
 
 This is a slow float diagnostic for the modified native-USB ESP32-S3-Korvo-2 V3.1. It replaces your existing application and partition table. Keep any firmware/data you need before flashing. Do not erase flash or change eFuses. Do not connect new camera wiring, a battery or a speaker for this test.
 
-1. In VS Code install/select Espressif ESP-IDF extension 2.3.0 and ESP-IDF 5.4.4. Open this korvo_vision folder as the project, then select your native-USB serial port.
+1. In VS Code install/select Espressif ESP-IDF extension 2.3.0 and ESP-IDF 5.3.6. Open this korvo_vision folder as the project, then select your native-USB serial port.
 2. Verify your module has at least 8MB flash and octal PSRAM. The stock Korvo product page says 16MB flash +8MB PSRAM, but your modified hardware must be checked. Use the extension's ESP-IDF terminal and its esptool flash-id command, or provide the module label/result for review. Stop if flash is below8MB or PSRAM type is uncertain. Do not force a binary write. Flash capacity is intentionally capped at8MB in this experiment.
 3. Choose ESP-IDF: Build your project. The partition is a single7MiB factory app, without OTA. It is a diagnostic layout, not an update system.
 4. When ready to replace the old application, choose ESP-IDF: Flash your project, using the selected native-USB port and UART flashing method. Choose ESP-IDF: Monitor your device. Do not interpret the generic SDK C++ linker driver as a C++ inference engine. All project inference/application source is C; the tiny assembly file only embeds aligned read-only float blobs.

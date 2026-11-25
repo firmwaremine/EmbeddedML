@@ -18,7 +18,7 @@ Nothing here has run on a board yet. Your logs are the first evidence.
 
 1. Open the Extensions view (`Ctrl+Shift+X`). Search for **Espressif IDF** and install **ESP-IDF** by Espressif Systems, version 2.3.0.
 2. Press `Ctrl+Shift+P` and run **ESP-IDF: Configure ESP-IDF Extension**.
-3. Choose **Express** setup, pick ESP-IDF version **5.4.4**, accept the default install folders, and wait for the tools to download. It takes a while.
+3. Choose **Express** setup, pick ESP-IDF version **5.3.6**, accept the default install folders, and wait for the tools to download. It takes a while.
 4. When it says setup is complete, restart VS Code.
 5. Check: the bottom status bar shows the ESP-IDF version and icons for Build, Flash and Monitor.
 
@@ -61,7 +61,7 @@ Nothing here has run on a board yet. Your logs are the first evidence.
 ### 1.2 Build
 
 1. Run **ESP-IDF: Build Your Project**.
-2. Expected: the output ends with the app size, about 625,504 bytes, and no error lines.
+2. Expected: the output ends with the app size, about 623,984 bytes, and no error lines.
 3. **Stop if** the build fails. Send me the full build output.
 
 ### 1.3 Flash and monitor
@@ -143,7 +143,7 @@ Event latency needs word start times on the same clock as the device log. Withou
 
 ### 2.2 Build, flash, monitor
 
-1. Run **ESP-IDF: Build Your Project**. Expected app size: about 4,025,232 bytes. It needs the 7 MiB partition.
+1. Run **ESP-IDF: Build Your Project**. Expected app size: about 4,023,984 bytes. It needs the 7 MiB partition.
 2. Run **ESP-IDF: Flash Your Project**, then **ESP-IDF: Monitor Your Device**.
 3. The run is slow on purpose. Wait until you see the final line.
 
@@ -203,7 +203,7 @@ Board side camera bus, for reference: D0 to D7 are GPIO 13, 47, 14, 3, 12, 42, 4
 
 1. **File > Open Folder** and choose `board-experiments/3-camera-health/korvo_camera_health`.
 2. Check the flash and PSRAM as in 0.3. Select the port and the esp32s3 target.
-3. **ESP-IDF: Build Your Project.** Expected app size about 232,784 bytes.
+3. **ESP-IDF: Build Your Project.** Expected app size about 228,208 bytes.
 4. **ESP-IDF: Flash Your Project.** Then **ESP-IDF: Monitor Your Device** with log saving on, then press reset. Capture everything, including every `FM_JPEG_BEGIN`, `FM_HEX` and `FM_JPEG_END` line.
 
 ### 3.3 Expected output
@@ -282,5 +282,5 @@ Partial runs and failures help. A successful flash or a photo of the board is no
 | Flash fails to connect | Check you chose the native USB port. Send the full flash output. Do not erase flash. |
 | Monitor shows garbage | Check you flashed the build for this folder and selected the right port. |
 | Boot log scrolled past | Press the board's reset button while the monitor is open. |
-| Build says wrong SDK | Re-run **ESP-IDF: Configure ESP-IDF Extension** and choose 5.4.4. |
+| Build says wrong SDK | Re-run **ESP-IDF: Configure ESP-IDF Extension** and choose 5.3.6. |
 | Anything else | Send the full log and what you did. Do not change the pin map or tolerances. |
