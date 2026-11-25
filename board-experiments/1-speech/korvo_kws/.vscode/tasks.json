@@ -1,0 +1,16 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "FirmwareMine: feature host tests",
+      "type": "shell",
+      "command": "gcc -std=c11 -g -O0 -Wall -Wextra -Werror -Wpedantic -I main main/features.c tests/host.c -lm -o host_test && ./host_test",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    }
+  ]
+}

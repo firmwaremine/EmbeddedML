@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "FirmwareMine: C vision parity",
+      "type": "shell",
+      "command": "gcc -std=c11 -Wall -Wextra -Werror -Wpedantic -O2 -fPIC -shared c_vision/vision_c.c -lm -o c_vision/libvision.so && python verify_c.py",
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+    {
+      "label": "FirmwareMine: sanitized C vision replay",
+      "type": "shell",
+      "command": "gcc -std=c11 -Wall -Wextra -Werror -Wpedantic -g -O1 -fsanitize=address,undefined -fno-omit-frame-pointer -I. vision_c.c tests/replay.c -lm -o replay_sanitized && ./replay_sanitized",
+      "options": {
+        "cwd": "${workspaceFolder}/c_vision"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    }
+  ]
+}

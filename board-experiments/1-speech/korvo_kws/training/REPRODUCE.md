@@ -1,0 +1,4 @@
+# Reproduce training
+Open this training folder in VS Code. Select the Python environment matching requirements.txt. Run the workspace tasks in order: download data, train, export and verify, evaluate stream. Training and export regenerate reports and headers in this folder, not the firmware main folder. A changed model requires copying model_data.h and selftest_data.h into ../main and rebuilding, plus a new evaluation record. Never mix new weights with an old self-test.
+
+The C exporter requires a C11 compiler named gcc on the host. Windows users can run these host tasks in an explicitly configured Linux development environment. The ESP-IDF board build is a separate extension workflow. Training uses PyTorch on the host; the board application/inference is C. No general graph importer is claimed.

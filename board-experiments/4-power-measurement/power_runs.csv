@@ -1,0 +1,7 @@
+run_id,date_time_timezone,meter_model,meter_serial_optional,firmware_sha256,phase,board_module,power_path,other_power_sources_none,supply,cable,peripherals,radio_state,console_state,warmup_seconds,start_energy_reading,end_energy_reading,energy_unit,energy_display_resolution,elapsed_seconds,voltage_representative,current_representative,voltage_range,current_range,completed_operations,resets_or_errors,conditions_and_notes
+run1,,,,,,,,,,,,,,,,,,,,,,,,,,
+run2,,,,,,,,,,,,,,,,,,,,,,,,,,
+run3,,,,,,,,,,,,,,,,,,,,,,,,,,
+run4,,,,,,,,,,,,,,,,,,,,,,,,,,
+run5,,,,,,,,,,,,,,,,,,,,,,,,,,
+run6,,,,,,,,,,,,,,,,,,,,,,,,,,

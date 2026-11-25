@@ -15,3 +15,6 @@ firmware/korvo_mic_lab/sdkconfig.usb
 *.map
 .DS_Store
 Thumbs.db
+
+# Prebuilt Korvo binaries (cross-build evidence)
+!board-experiments/**/prebuilt*/**/*.bin

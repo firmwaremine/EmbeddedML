@@ -1,0 +1,384 @@
+{
+  "validation_candidates": [
+    {
+      "threshold": 0.5,
+      "target_trials": 80,
+      "correct": 62,
+      "missed": 18,
+      "unmatched_events": 83,
+      "event_f1": 0.5511111111111111
+    },
+    {
+      "threshold": 0.6,
+      "target_trials": 80,
+      "correct": 65,
+      "missed": 15,
+      "unmatched_events": 66,
+      "event_f1": 0.6161137440758294
+    },
+    {
+      "threshold": 0.7,
+      "target_trials": 80,
+      "correct": 63,
+      "missed": 17,
+      "unmatched_events": 50,
+      "event_f1": 0.6528497409326425
+    },
+    {
+      "threshold": 0.8,
+      "target_trials": 80,
+      "correct": 60,
+      "missed": 20,
+      "unmatched_events": 36,
+      "event_f1": 0.6818181818181818
+    },
+    {
+      "threshold": 0.9,
+      "target_trials": 80,
+      "correct": 59,
+      "missed": 21,
+      "unmatched_events": 18,
+      "event_f1": 0.7515923566878981
+    }
+  ],
+  "selected_threshold": 0.9,
+  "test": {
+    "threshold": 0.9,
+    "target_trials": 80,
+    "correct": 55,
+    "missed": 25,
+    "unmatched_events": 27,
+    "event_f1": 0.6790123456790124,
+    "events": [
+      {
+        "time": 2.7,
+        "label": "go"
+      },
+      {
+        "time": 6.0,
+        "label": "go"
+      },
+      {
+        "time": 9.3,
+        "label": "go"
+      },
+      {
+        "time": 12.0,
+        "label": "go"
+      },
+      {
+        "time": 14.9,
+        "label": "go"
+      },
+      {
+        "time": 17.7,
+        "label": "go"
+      },
+      {
+        "time": 20.4,
+        "label": "go"
+      },
+      {
+        "time": 35.8,
+        "label": "go"
+      },
+      {
+        "time": 38.6,
+        "label": "go"
+      },
+      {
+        "time": 42.1,
+        "label": "go"
+      },
+      {
+        "time": 54.4,
+        "label": "stop"
+      },
+      {
+        "time": 56.2,
+        "label": "stop"
+      },
+      {
+        "time": 57.2,
+        "label": "go"
+      },
+      {
+        "time": 63.0,
+        "label": "no"
+      },
+      {
+        "time": 72.0,
+        "label": "no"
+      },
+      {
+        "time": 77.8,
+        "label": "yes"
+      },
+      {
+        "time": 80.2,
+        "label": "stop"
+      },
+      {
+        "time": 81.3,
+        "label": "yes"
+      },
+      {
+        "time": 83.7,
+        "label": "no"
+      },
+      {
+        "time": 86.6,
+        "label": "no"
+      },
+      {
+        "time": 89.5,
+        "label": "no"
+      },
+      {
+        "time": 92.9,
+        "label": "go"
+      },
+      {
+        "time": 95.6,
+        "label": "no"
+      },
+      {
+        "time": 98.4,
+        "label": "stop"
+      },
+      {
+        "time": 101.4,
+        "label": "stop"
+      },
+      {
+        "time": 104.5,
+        "label": "no"
+      },
+      {
+        "time": 108.1,
+        "label": "no"
+      },
+      {
+        "time": 111.4,
+        "label": "go"
+      },
+      {
+        "time": 122.7,
+        "label": "stop"
+      },
+      {
+        "time": 125.4,
+        "label": "stop"
+      },
+      {
+        "time": 128.6,
+        "label": "stop"
+      },
+      {
+        "time": 131.4,
+        "label": "yes"
+      },
+      {
+        "time": 134.7,
+        "label": "stop"
+      },
+      {
+        "time": 137.4,
+        "label": "yes"
+      },
+      {
+        "time": 140.7,
+        "label": "stop"
+      },
+      {
+        "time": 143.6,
+        "label": "stop"
+      },
+      {
+        "time": 146.3,
+        "label": "stop"
+      },
+      {
+        "time": 149.7,
+        "label": "stop"
+      },
+      {
+        "time": 155.7,
+        "label": "stop"
+      },
+      {
+        "time": 159.1,
+        "label": "stop"
+      },
+      {
+        "time": 161.7,
+        "label": "stop"
+      },
+      {
+        "time": 164.7,
+        "label": "stop"
+      },
+      {
+        "time": 167.8,
+        "label": "stop"
+      },
+      {
+        "time": 170.8,
+        "label": "stop"
+      },
+      {
+        "time": 173.4,
+        "label": "yes"
+      },
+      {
+        "time": 176.3,
+        "label": "stop"
+      },
+      {
+        "time": 179.8,
+        "label": "stop"
+      },
+      {
+        "time": 183.0,
+        "label": "yes"
+      },
+      {
+        "time": 185.7,
+        "label": "yes"
+      },
+      {
+        "time": 188.7,
+        "label": "yes"
+      },
+      {
+        "time": 191.7,
+        "label": "yes"
+      },
+      {
+        "time": 194.7,
+        "label": "yes"
+      },
+      {
+        "time": 197.7,
+        "label": "yes"
+      },
+      {
+        "time": 200.7,
+        "label": "yes"
+      },
+      {
+        "time": 203.4,
+        "label": "yes"
+      },
+      {
+        "time": 206.6,
+        "label": "yes"
+      },
+      {
+        "time": 209.7,
+        "label": "yes"
+      },
+      {
+        "time": 212.7,
+        "label": "yes"
+      },
+      {
+        "time": 215.4,
+        "label": "yes"
+      },
+      {
+        "time": 218.3,
+        "label": "stop"
+      },
+      {
+        "time": 219.3,
+        "label": "yes"
+      },
+      {
+        "time": 221.7,
+        "label": "yes"
+      },
+      {
+        "time": 224.7,
+        "label": "yes"
+      },
+      {
+        "time": 228.0,
+        "label": "yes"
+      },
+      {
+        "time": 230.9,
+        "label": "yes"
+      },
+      {
+        "time": 233.5,
+        "label": "yes"
+      },
+      {
+        "time": 236.9,
+        "label": "yes"
+      },
+      {
+        "time": 239.7,
+        "label": "yes"
+      },
+      {
+        "time": 260.7,
+        "label": "stop"
+      },
+      {
+        "time": 287.5,
+        "label": "stop"
+      },
+      {
+        "time": 302.7,
+        "label": "yes"
+      },
+      {
+        "time": 308.9,
+        "label": "no"
+      },
+      {
+        "time": 321.5,
+        "label": "yes"
+      },
+      {
+        "time": 333.7,
+        "label": "no"
+      },
+      {
+        "time": 381.4,
+        "label": "yes"
+      },
+      {
+        "time": 402.4,
+        "label": "no"
+      },
+      {
+        "time": 407.5,
+        "label": "stop"
+      },
+      {
+        "time": 446.4,
+        "label": "stop"
+      },
+      {
+        "time": 455.2,
+        "label": "stop"
+      },
+      {
+        "time": 459.6,
+        "label": "go"
+      },
+      {
+        "time": 473.3,
+        "label": "stop"
+      },
+      {
+        "time": 476.4,
+        "label": "yes"
+      }
+    ]
+  },
+  "scope": "Constructed host stream using 20 real held-out clips per original word and digital silence. 80 target + 80 other-word trials. Not continuous naturally spoken audio, ambient noise or a device result. Threshold selected on separate validation speakers only. Single-hit gate, 100ms hop, 3 noncandidates release latch, 1s cooldown, RMS >=0.005."
+}
