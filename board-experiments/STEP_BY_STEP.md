@@ -11,8 +11,8 @@ Nothing here has run on a board yet. Your logs are the first evidence.
 1. Open VS Code.
 2. Press `Ctrl+Shift+P` (macOS `Cmd+Shift+P`) and run **Git: Clone**.
 3. Paste `https://github.com/firmwaremine/EmbeddedML.git`, choose a folder, and open the clone.
-4. Switch to the branch `korvo-board-experiments` (bottom-left branch name, then pick it) until it is merged to `main`.
-5. You only need the `board-experiments/` folder. The `realdata/` folder is 485 MB of training data. For a lighter clone, use **Code > Download ZIP** on the branch page and unzip only `board-experiments/`.
+4. Stay on the default branch, `main`. It already has everything in `board-experiments/`, so no branch switch is needed.
+5. You only need the `board-experiments/` folder. The `realdata/` folder is 485 MB of training data. For a lighter clone, use **Code > Download ZIP** on the repository page and unzip only `board-experiments/`.
 
 ### 0.2 Install ESP-IDF in VS Code
 
