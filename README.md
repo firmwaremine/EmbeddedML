@@ -5,7 +5,7 @@ Embedded machine-learning teaching code from FirmwareMine for ESP32-S3-Korvo-2 V
 ## Choose a VS Code workspace
 
 - Open `examples/` for the C11/Python development-workstation experiments. Its README maps all 70 files, documents Linux/WSL prerequisites and names the chapter tasks. These are host teaching experiments, not flashable firmware.
-- Open `firmware/korvo_mic_lab/` for the ESP-IDF microphone-capture project. Use ESP-IDF 5.4.4 with the official Espressif ESP-IDF extension `espressif.esp-idf-extension` 2.3.0. Native USB routing requires the documented board modification; stock and modified console configurations differ. Read the project's README and DEBUGGING guide before connecting or flashing.
+- Open `firmware/korvo_mic_lab/` for the ESP-IDF microphone-capture project. Use ESP-IDF 5.3.6 with the official Espressif ESP-IDF extension `espressif.esp-idf-extension` 2.3.0. Native USB routing requires the documented board modification; stock and modified console configurations differ. Read the project's README and DEBUGGING guide before connecting or flashing.
 
 - Open `board-experiments/` for the three Korvo board experiments (speech, photo CNN, camera health) and the USB power worksheet. Start with its README. Cross-built only, not yet run on a board.
 

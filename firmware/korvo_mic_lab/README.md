@@ -6,7 +6,7 @@ Target: Espressif ESP32-S3-Korvo-2 V3.1. This is real target firmware, successfu
 
 ## Versions and dependencies
 
-- ESP-IDF v5.4.4, exact project constraint. This is a tested pin, not a claim that it is the newest release.
+- ESP-IDF v5.3.6, exact project constraint. This is a tested pin, not a claim that it is the newest release. It was cross-built and checked on this version.
 - espressif/esp_codec_dev 1.6.2, downloaded by IDF Component Manager. dependencies.lock included.
 - Application/feature code is original C11-style C. Codec code is Espressif's Apache-2.0 C dependency, attributed in THIRD_PARTY.md. SDK uses its normal mixed-language build environment. No C++ model engine is used; the SDK's final C++ linker driver does not change our source language.
 - Windows, Linux or macOS can use the IDF environment. The verified build was on Linux x86-64 with the official Xtensa ESP GCC toolchain installed by IDF. No target board is attached here.
@@ -23,7 +23,7 @@ The two stock USB ports are NOT interchangeable native-JTAG ports. One is UART, 
 
 ## VS Code setup and project opening
 
-Use Visual Studio Code with Espressif's ESP-IDF extension. In Extensions, install **ESP-IDF** by **Espressif Systems**, identifier `espressif.esp-idf-extension`, version **2.3.0**. In the extension gear menu choose **Install Another Version...** and select 2.3.0 if needed, then disable auto-update for this extension to retain the pin. Verify the identifier and version in its Installation panel. The extension version is separate from ESP-IDF framework version 5.4.4. Open **View > Command Palette** and select **ESP-IDF: Open ESP-IDF Installation Manager**. Install ESP-IDF **5.4.4** and its ESP32-S3 tools. Select **ESP-IDF: Select Current ESP-IDF Version** and choose that exact installation. Record the extension version as well as the IDF version. Do not install ADF for this project.
+Use Visual Studio Code with Espressif's ESP-IDF extension. In Extensions, install **ESP-IDF** by **Espressif Systems**, identifier `espressif.esp-idf-extension`, version **2.3.0**. In the extension gear menu choose **Install Another Version...** and select 2.3.0 if needed, then disable auto-update for this extension to retain the pin. Verify the identifier and version in its Installation panel. The extension version is separate from ESP-IDF framework version 5.3.6. Open **View > Command Palette** and select **ESP-IDF: Open ESP-IDF Installation Manager**. Install ESP-IDF **5.3.6** and its ESP32-S3 tools. Select **ESP-IDF: Select Current ESP-IDF Version** and choose that exact installation. Record the extension version as well as the IDF version. Do not install ADF for this project.
 
 Extract the complete companion project and use **File > Open Folder** to open `korvo_mic_lab`. Trust only the extracted project whose source has been reviewed. The supplied `.vscode/settings.json` selects the native-USB `build-usb` profile. Use this profile only after verifying the native USB hardware path. For an unmodified stock board, replace those settings with the stock profile below before the first build.
 
@@ -52,7 +52,7 @@ The flash method name UART refers to the serial bootloader transport used by the
 
 For the board-modification procedure and IDE demonstration, use the FirmwareMine video guide: [ESP32-S3-Korvo-2 native USB/JTAG modification](https://www.youtube.com/watch?v=GXsBVtyfmGY). Review the full procedure before attempting rework. Disconnect all power, USB cables and batteries before soldering; confirm the board revision and schematic, and use qualified rework support if necessary. The V3.1.2 schematic identifies the stock J6 path through R181/R182 to CP2102N and the alternate R394/R395 path to native USB. Do not infer resistor placement or soldering steps from the conceptual connection illustration in this chapter. Verify the completed routing and inspect for shorts before applying power. If native USB routing is already present, do not repeat the modification.
 
-The video demonstrates IDF4.4/ADF. Use it for the hardware modification and debugging concepts, not this lab's software dependency versions. This project requires IDF5.4.4 without ADF. The stock profile uses UART0 logs; after verifying native USB routing, use the separate native-USB console configuration below:
+The video demonstrates IDF4.4/ADF. Use it for the hardware modification and debugging concepts, not this lab's software dependency versions. This project requires IDF5.3.6 without ADF. The stock profile uses UART0 logs; after verifying native USB routing, use the separate native-USB console configuration below:
 
 After confirming the native USB modification, keep the supplied `build-usb` settings. For a stock board choose the stock settings instead. In **ESP-IDF: Select Port to Use (COM, tty, usbserial)**, select the actual device entry. Native USB uses the Espressif USB Serial/JTAG serial interface; stock uses CP2102N. Unplug/reconnect the data cable to identify the changing entry. Close other serial applications. A missing entry requires driver, permission, cable and routing checks, not repeated soldering.
 

@@ -20,13 +20,13 @@ Open the project in a separate VS Code Linux/WSL window with the Microsoft C/C++
 Once a safe native GPIO19/20 USB access route is established on YOUR board, the S3's built-in JTAG can support full OpenOCD/GDB debugging without a separate JTAG probe. Use the matching IDF OpenOCD target configuration and driver setup. That access may require hardware work on Korvo; it is not an instruction to use its stock power/UART connectors as native USB. No eFuse change is required by this lab.
 
 Official references:
-https://docs.espressif.com/projects/esp-idf/en/v5.4.4/esp32s3/api-guides/jtag-debugging/configure-builtin-jtag.html
-https://docs.espressif.com/projects/esp-idf/en/v5.4.4/esp32s3/api-guides/fatal-errors.html
+https://docs.espressif.com/projects/esp-idf/en/v5.3.6/esp32s3/api-guides/jtag-debugging/configure-builtin-jtag.html
+https://docs.espressif.com/projects/esp-idf/en/v5.3.6/esp32s3/api-guides/fatal-errors.html
 https://dl.espressif.com/dl/schematics/SCH_ESP32-S3-Korvo-2_V3.1.2_20240116.pdf
 
 ## Modified-board native USB/JTAG: full step-debug lab
 
-Follow the [FirmwareMine board-modification video guide](https://www.youtube.com/watch?v=GXsBVtyfmGY) for the native USB/JTAG hardware procedure. Read the modification precautions in the preceding setup section. Stock boards do not provide this routing at J6. Use this lab only after the physical native USB path has been verified. The video uses IDF4.4/ADF; the firmware in this book uses IDF5.4.4 without ADF.
+Follow the [FirmwareMine board-modification video guide](https://www.youtube.com/watch?v=GXsBVtyfmGY) for the native USB/JTAG hardware procedure. Read the modification precautions in the preceding setup section. Stock boards do not provide this routing at J6. Use this lab only after the physical native USB path has been verified. The video uses IDF4.4/ADF; the firmware in this book uses IDF5.3.6 without ADF.
 
 1. In VS Code keep the `build-usb` profile. Open **ESP-IDF: SDK Configuration Editor**, choose compiler optimization **Debug (-Og)** and save. Use **ESP-IDF: Build your Project**, then flash the matching binary. Do not use a stale ELF from a release build.
 2. Run **ESP-IDF: Select Port to Use (COM, tty, usbserial)**. Use **ESP-IDF: Select OpenOCD Board Configuration** and select the ESP32-S3 built-in USB JTAG configuration (`board/esp32s3-builtin.cfg`). Install the documented USB JTAG driver/permissions for the operating system. A serial port alone is not proof that the JTAG interface is accessible.
@@ -36,7 +36,7 @@ Follow the [FirmwareMine board-modification video guide](https://www.youtube.com
 
 Evidence to retain: a breakpoint/variable view from the physical board, the exact ELF and build configuration, and a clean uninterrupted acceptance log. Cross-build results alone do not verify hardware debugging or capture performance.
 
-Verified command reference: https://docs.espressif.com/projects/esp-idf/en/v5.4.4/esp32s3/api-guides/jtag-debugging/using-debugger.html
+Verified command reference: https://docs.espressif.com/projects/esp-idf/en/v5.3.6/esp32s3/api-guides/jtag-debugging/using-debugger.html
 
 VS Code references:
 https://docs.espressif.com/projects/vscode-esp-idf-extension/en/latest/installation.html

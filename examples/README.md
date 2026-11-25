@@ -10,7 +10,7 @@ Prerequisites: Python 3.10+, GCC with C11 support, CMake 3.16+, CTest and NumPy 
 
 Choose Terminal > Run Task and a named `FirmwareMine: Chapter ...` task. Chapter 22 runs the full ordinary host regression without retraining. Chapter 4 retrains the baseline; Chapter 7 retrains the neural model; Chapters 10, 13 and 15 regenerate their own teaching models. Training/export rewrites files. Back up any changed experiment first, and export C headers/rebuild after training. The full regression uses the saved models and is the safest first check. Task commands are visible in `.vscode/tasks.json` for review.
 
-ESP-IDF extension `espressif.esp-idf-extension` 2.3.0 and framework 5.4.4 belong to the separate Korvo board workspace. They are not the compiler/toolchain for this host-only examples folder. No C++ compiler, extra deployment platform, camera driver or physical sensor connection is required here.
+ESP-IDF extension `espressif.esp-idf-extension` 2.3.0 and framework 5.3.6 belong to the separate Korvo board workspace. They are not the compiler/toolchain for this host-only examples folder. No C++ compiler, extra deployment platform, camera driver or physical sensor connection is required here.
 
 ## Scope and verification
 

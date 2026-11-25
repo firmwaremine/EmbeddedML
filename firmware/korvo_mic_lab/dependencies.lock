@@ -12,10 +12,10 @@ dependencies:
   idf:
     source:
       type: idf
-    version: 5.4.4
+    version: 5.3.6
 direct_dependencies:
 - espressif/esp_codec_dev
 - idf
-manifest_hash: 9411fdf16ea92ca549204a9b45a11be42439376261f0af13560aa2e1e035a557
+manifest_hash: d97ffa33e071c0be6a8c0fdf409ed8e8a3f109749286710147bf4b3204b8fc24
 target: esp32s3
 version: 2.0.0
