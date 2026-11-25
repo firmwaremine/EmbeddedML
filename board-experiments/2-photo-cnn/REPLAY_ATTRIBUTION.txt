@@ -1,0 +1,3 @@
+Replay tensor derived from daisy/10841136265_af473efc60.jpg using center crop, Pillow bilinear96x96 RGB and ImageNet normalization. Original attribution:
+daisy/10841136265_af473efc60.jpg CC-BY by Pavlina Jane - https://www.flickr.com/photos/pavlinajane/10841136265/
+CC BY2.0 https://creativecommons.org/licenses/by/2.0/

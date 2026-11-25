@@ -1,0 +1,12 @@
+{
+  "idf": "5.4.4",
+  "board": "ESP32-S3-Korvo-2 V3.1 modified native USB",
+  "status": "cross-built only, physical sensor and frame not verified",
+  "binary_bytes": 232784,
+  "binary_sha256": "1c90e304b6f65d23ddf819ba5beed1bc2d7d068f5e6eb3dd7ee6844c626705e7",
+  "capture": "320x240 sensor JPEG, OV3660 PID gate, one framebuffer PSRAM",
+  "driver_revision": "f5257073e2a41c945eb618570a76063b8e4eed18",
+  "project_sources": "C only; optional C++ converters not compiled",
+  "task_watchdog": true,
+  "extractor_test": "generated JPEG exact roundtrip, corrupted payload rejected; not a camera frame"
+}

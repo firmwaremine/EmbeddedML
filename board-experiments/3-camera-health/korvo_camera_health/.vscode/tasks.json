@@ -1,0 +1,11 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "FirmwareMine: extract captured JPEG",
+      "type": "shell",
+      "command": "python extract_frame.py monitor.log capture.jpg",
+      "problemMatcher": []
+    }
+  ]
+}

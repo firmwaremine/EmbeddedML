@@ -1,0 +1,13 @@
+{
+  "board": "ESP32-S3-Korvo-2 V3.1, modified native USB",
+  "idf": "5.4.4",
+  "status": "cross-build only, no physical run",
+  "binary_bytes": 4025232,
+  "binary_sha256": "da36efd9e2d98065b85cdbe9974e81949ef4a97dbe68baff61dec376691fe2fa",
+  "inference": "C11 original implementation, no external inference engine",
+  "arena_bytes": 405504,
+  "weights_bytes": 3719572,
+  "partition_bytes": 7340032,
+  "psram": "octal 80MHz, must verify actual module before flash",
+  "task_watchdog": "disabled for diagnostic only, not production firmware"
+}

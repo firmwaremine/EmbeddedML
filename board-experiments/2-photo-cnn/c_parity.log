@@ -1,0 +1,7 @@
+0 agreement 1 max layer 7.05718994140625e-05
+100 agreement 101 max layer 0.0002231597900390625
+200 agreement 201 max layer 0.00032258033752441406
+300 agreement 301 max layer 0.00032258033752441406
+400 agreement 401 max layer 0.00032258033752441406
+500 agreement 501 max layer 0.00032258033752441406
+{'images': 555, 'labels_agree': 555, 'max_observed_layer_abs_error': 0.00032258033752441406, 'layer_check_images': 555, 'max_output_logit_abs_error': 4.649162292480469e-05, 'c_test_accuracy': 0.809009009009009, 'c_confusion_matrix': [[66, 4, 1, 6, 4], [9, 122, 1, 12, 1], [3, 3, 74, 2, 17], [4, 1, 1, 101, 4], [6, 7, 13, 7, 86]], 'arena_bytes': 405504, 'weights_bytes': 3719572, 'host_ms': {'median': 25.087723000069673, 'p95': 27.549785299925134, 'maximum': 172.36147399989932}, 'scope': 'Strict C11 host reference. Input crop/resize performed by Pillow, not claimed as a camera adapter. 555-image all-layer and output-label check. No Korvo execution or optimized timing.'}

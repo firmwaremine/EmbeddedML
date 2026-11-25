@@ -1,0 +1,41 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "FirmwareMine: download recorded speech",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "download_data.py"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: train speech model",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "train.py"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: export and check C",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "export_verify.py"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "FirmwareMine: evaluate stream",
+      "type": "process",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "evaluate_stream.py"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

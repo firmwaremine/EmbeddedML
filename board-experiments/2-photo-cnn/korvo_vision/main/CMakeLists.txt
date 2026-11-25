@@ -1,0 +1,5 @@
+idf_component_register(SRCS "main.c" "vision_c.c" "${CMAKE_CURRENT_BINARY_DIR}/model.S" INCLUDE_DIRS "." REQUIRES esp_timer heap esp_psram esp_driver_gpio)
+if(NOT CMAKE_BUILD_EARLY_EXPANSION)
+ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/model.S.in" "${CMAKE_CURRENT_BINARY_DIR}/model.S" @ONLY)
+ target_compile_options(${COMPONENT_LIB} PRIVATE $<$<COMPILE_LANGUAGE:C>:-Wall;-Wextra;-Werror;-Wpedantic>)
+endif()

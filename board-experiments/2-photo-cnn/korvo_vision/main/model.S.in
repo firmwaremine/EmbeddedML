@@ -1,0 +1,14 @@
+/* Explicit alignment for read-only float arrays mapped from flash. */
+.section .rodata.vision,"a"
+.balign 4
+.global vision_weights
+vision_weights:
+.incbin "@CMAKE_CURRENT_SOURCE_DIR@/weights.f32"
+.balign 4
+.global vision_replay_input
+vision_replay_input:
+.incbin "@CMAKE_CURRENT_SOURCE_DIR@/replay_input.f32"
+.balign 4
+.global vision_replay_logits
+vision_replay_logits:
+.incbin "@CMAKE_CURRENT_SOURCE_DIR@/replay_logits.f32"

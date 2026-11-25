@@ -1,0 +1,4 @@
+# Data provenance
+Speech Commands dataset excerpt, collected by Google/TensorFlow contributors, authored dataset paper by Pete Warden (2018). CC BY 4.0. Public source: https://www.tensorflow.org/tutorials/audio/simple_audio . License evidence: https://research.google/blog/launching-the-speech-commands-dataset/ and https://arxiv.org/html/1804.03209v1 . License: https://creativecommons.org/licenses/by/4.0/ .
+
+Downloaded mini_speech_commands.zip from https://storage.googleapis.com/download.tensorflow.org/data/mini_speech_commands.zip . SHA-256: 49650f2341b26d886b46b3f4fb8fed59e30300b17550f1ee4a768b3106cf93a0 . Eight thousand public recordings. A single held-out recording is embedded as raw PCM for boot replay; labels and metadata were regrouped for this original experiment. Model weights are newly trained. Speaker identities are hashed into disjoint splits. The model is not trained for arbitrary unknown speech or background noise.

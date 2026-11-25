@@ -1,0 +1,1 @@
+{"idf.buildPath":"${workspaceFolder}/build","idf.sdkconfigDefaults":["sdkconfig.defaults"],"idf.openOcdConfigs":["board/esp32s3-builtin.cfg"],"idf.flashType":"UART","idf.flashBaudRate":"460800"}

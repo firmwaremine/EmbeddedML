@@ -1,0 +1,9 @@
+{
+  "sdk": "ESP-IDF 5.4.4",
+  "codec": "1.6.2",
+  "profile": "modified native USB Serial/JTAG",
+  "app_bytes": 625504,
+  "app_sha256": "2039845390c276f26126672e6ebbbdc1cd56ed543bfdc34bdbf4f9c5f9bdce67",
+  "model_header_sha256": "d3896dbf50088113a2f93afed5f117abc8c1b908da9bd93def3d0761f5fa696c",
+  "hardware_executed": false
+}
