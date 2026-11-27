@@ -46,6 +46,14 @@ Status: the speech app (Part 1) has run on a board in short practice runs, with 
 2. After the run, select all of the terminal text (`Ctrl+A` inside the terminal) and copy it into a new text file, or use the monitor's log-to-file option if your version offers one.
 3. Save as the file name given in each part. A screenshot of the last line is not enough.
 
+**Recording straight to a file (Windows PowerShell).** Copying a long log is error-prone. Instead, close any open monitor, open a normal PowerShell terminal in the project folder (for example `korvo_kws`) and run the extension's own monitor command with the output piped to a file. Use the Python and `idf_monitor.py` paths of your 5.3.6 install; the form below is the one that worked on the owner's machine (replace `COM4` with your port):
+
+```
+& 'C:\Espressif\tools\python\v5.3.6\venv\Scripts\python.exe' 'C:\esp\v5.3.6\esp-idf\tools\idf_monitor.py' -p COM4 -b 115200 --target esp32s3 .\build-usb\korvo_kws.elf | Tee-Object run-01.txt
+```
+
+Press `Ctrl+]` to stop. `run-01.txt` is written in the project folder. Windows PowerShell 5 saves it as UTF-16, which is fine for review. Plain `idf.py monitor | Tee-Object` does not work in PowerShell, because the monitor needs an interactive terminal.
+
 ---
 
 ## Part 1. Speech: `1-speech/korvo_kws`
