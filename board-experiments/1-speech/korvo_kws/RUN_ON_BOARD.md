@@ -20,7 +20,7 @@ Flashing replaces the application on the board. Save anything you need from its 
 2. Use the official Espressif ESP-IDF extension, version 2.3.0, as selected for this book. Configure ESP-IDF 5.3.6 through the extension's setup workflow.
 3. Check the workspace settings: build folder `build-usb`, sdkconfig `sdkconfig.usb`, defaults `sdkconfig.usb.defaults`. The delivered workspace is configured for the modified native-USB/JTAG console.
 4. Use the extension command **ESP-IDF: Set Espressif Device Target**, choose ESP32-S3. Choose the native USB Serial/JTAG serial port through **ESP-IDF: Select Port to Use**.
-5. Use **ESP-IDF: Build Your Project**. Read the output and stop if there is an error. The delivered build was cross-compiled, but not run on physical hardware.
+5. Use **ESP-IDF: Build Your Project**. Read the output and stop if there is an error. The delivered build was cross-compiled and has run in short practice runs on one board (replay passed, microphone capture, no overflow). The formal trial has not been recorded.
 6. When you are ready to replace the current board application, use **ESP-IDF: Flash Your Project**. Then open **ESP-IDF: Monitor Your Device**. Do not erase the entire flash as a routine troubleshooting step.
 7. Save the full monitor output to a text file. If your extension's monitor does not offer a save control, copy its full terminal text into `run-01.txt`; do not keep only a screenshot of the final line.
 

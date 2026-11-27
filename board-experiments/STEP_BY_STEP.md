@@ -2,7 +2,7 @@
 
 Follow the parts in order. Each part has the same shape: **open, check, build, flash, run, expected output, save, stop if**. Quoted log lines show the format the firmware prints. Numbers in them (times, errors, bytes) will differ on your board; those are exactly what you are measuring.
 
-Nothing here has run on a board yet. Your logs are the first evidence.
+Status: the speech app (Part 1) has run on a board in short practice runs, with no formal trial recorded yet. The CNN replay (Part 2), the camera (Part 3) and the power measurement (Part 4) have not run on hardware. Your trial logs are the first evidence for any accuracy or timing claim.
 
 ## Part 0. One-time setup
 
@@ -168,7 +168,7 @@ TRIAL=0 label=<class> expected=<class> logit_error=0.00000xx duration_us=<number
 TRIAL=1 ...
 TRIAL=2 ...
 LOGITS <five numbers>
-Replay finished. No target benchmark is established until these logs are captured on the physical board.
+Replay finished. No target benchmark is established until these logs are captured on the physical board. The CNN replay has not run on hardware yet.
 ```
 
 1. `PASS=1` needs the expected class and a final-logit error below 0.01.

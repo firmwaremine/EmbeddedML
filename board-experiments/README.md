@@ -2,7 +2,7 @@
 
 Three experiments and one measurement worksheet for the **ESP32-S3-Korvo-2 V3.1** (native-USB modification), written in pure C on ESP-IDF 5.3.6 (the version installed on the target workstation). They go with the book *From Firmware to Machine Learning*.
 
-**Status: cross-built, not yet run on a board.** Every number below comes from a computer or a compiler. No board speed, accuracy, camera or power result exists until you run these and send back the logs.
+**Status: speech app ran on a board in practice runs; no formal trial, camera, CNN or power result yet.** The speech app (`korvo_kws`) booted on the owner's physical Korvo board on 26 Nov 2026. The numbers in the table below under "Practice runs on the board" come from those short practice runs, which are not a benchmark. Everything else in this document comes from a computer or a compiler. No camera, CNN or power result exists until you run those and send back the logs.
 
 **Start here: [STEP_BY_STEP.md](STEP_BY_STEP.md).** Numbered steps for setup, each run, expected output, what to save and when to stop. A shorter PDF version is in [docs/Korvo_Board_Run_Guide.pdf](docs/Korvo_Board_Run_Guide.pdf).
 
@@ -67,7 +67,9 @@ Partial runs and failures are useful. A successful flash or a photo of the board
 | CNN: 80.90% on 555 held-out flower photos. All 156 graph nodes match PyTorch on all 555 images. Max output error 0.0000465 | Computer |
 | CNN memory: 405,504-byte arena, 3,719,572-byte float weights, 4,023,984-byte app | Build output |
 | Camera diagnostic cross-builds, app 228,208 bytes. Frame-extraction tests pass on generated JPEGs | Computer |
-| Anything on the board: latency, accuracy, camera frames, power | **Not measured yet** |
+| Speech app on the board, practice runs (26 Nov 2026, quiet-log build, ESP-IDF 5.3.6): REPLAY selftest PASS (logit error 0.0000029), ES7210 codec opened, 16 kHz stereo capture, front end about 51 ms and network about 21 ms per one-second window, 0 GAP overflow and 0 skipped windows, flat heap. In the two speaking practice runs, each spoken `stop` and `yes` produced one event (3 of 3 each time, by cluster count; the spoken order was not recorded, so this is a count of clusters and not a scored result); `no` fired once and `go` never did, because their confidence stayed below the 0.90 gate | Board, **practice runs only**: short, unscored, no recorded ground truth, one speaker, one room. Not a benchmark and not an accuracy figure |
+| The formal speech trial (20 shuffled utterances per word, a negative session, a filled `trials.csv`) | **Not recorded yet** |
+| Camera frames, CNN replay on the board, USB power | **Not run on hardware yet** |
 
 ## Limits
 
